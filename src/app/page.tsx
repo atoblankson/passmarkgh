@@ -12,6 +12,7 @@ import { FAQSection } from "@/components/landing/faq-section";
 import { Footer } from "@/components/layout/footer";
 import { Button } from "@/components/ui/button";
 import { AnimatedCounter } from "@/components/ui/animated-counter";
+import { ScrollReveal } from "@/components/ui/scroll-reveal";
 
 export default function HomePage() {
   return (
@@ -78,41 +79,41 @@ export default function HomePage() {
       {/* Social Proof Stats Bar */}
       <section className="border-y border-slate-200/80 bg-slate-50/50 py-8 px-4 sm:px-6">
         <div className="mx-auto max-w-6xl grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-0 sm:divide-x sm:divide-slate-200/80 text-center">
-          <div className="hover-lift px-2 py-1">
+          <ScrollReveal variant="fade-up" delay={0} className="hover-lift px-2 py-1">
             <div className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight">
               <AnimatedCounter target={300000} suffix="+" duration={1200} />
             </div>
             <div className="text-[11px] sm:text-xs font-semibold text-slate-500 mt-1 uppercase tracking-wider">
               Annual WASSCE Candidates
             </div>
-          </div>
+          </ScrollReveal>
 
-          <div className="hover-lift px-2 py-1">
+          <ScrollReveal variant="fade-up" delay={80} className="hover-lift px-2 py-1">
             <div className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-brand-blue tracking-tight">
               <AnimatedCounter target={60} suffix="+" duration={1000} />
             </div>
             <div className="text-[11px] sm:text-xs font-semibold text-slate-500 mt-1 uppercase tracking-wider">
               Ghanaian Universities
             </div>
-          </div>
+          </ScrollReveal>
 
-          <div className="hover-lift px-2 py-1">
+          <ScrollReveal variant="fade-up" delay={160} className="hover-lift px-2 py-1">
             <div className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight">
               <AnimatedCounter target={400} suffix="+" duration={1100} />
             </div>
             <div className="text-[11px] sm:text-xs font-semibold text-slate-500 mt-1 uppercase tracking-wider">
               Degree Programmes Indexed
             </div>
-          </div>
+          </ScrollReveal>
 
-          <div className="hover-lift px-2 py-1">
+          <ScrollReveal variant="fade-up" delay={240} className="hover-lift px-2 py-1">
             <div className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-brand-blue tracking-tight">
               <AnimatedCounter prefix="GH₵" target={580} suffix="+" duration={1200} />
             </div>
             <div className="text-[11px] sm:text-xs font-semibold text-slate-500 mt-1 uppercase tracking-wider">
               Average Savings Per Student
             </div>
-          </div>
+          </ScrollReveal>
         </div>
       </section>
 
@@ -123,7 +124,9 @@ export default function HomePage() {
       <ComparisonSection />
 
       {/* Interactive Real-Time Calculator Teaser Widget */}
-      <InteractiveCalculatorTeaser />
+      <ScrollReveal variant="fade-up" threshold={0.08}>
+        <InteractiveCalculatorTeaser />
+      </ScrollReveal>
 
       {/* Supported Universities Showcase */}
       <UniversitiesGrid />
@@ -132,10 +135,14 @@ export default function HomePage() {
       <PricingSection />
 
       {/* Full Waitlist & Instant Alerts Form */}
-      <WaitlistForm />
+      <ScrollReveal variant="fade-up" threshold={0.1}>
+        <WaitlistForm />
+      </ScrollReveal>
 
       {/* FAQ Accordion Section */}
-      <FAQSection />
+      <ScrollReveal variant="fade-up" threshold={0.1}>
+        <FAQSection />
+      </ScrollReveal>
 
       {/* Footer */}
       <Footer />

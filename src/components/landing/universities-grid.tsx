@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { MapPin, CheckCircle, Plus, ArrowRight } from "lucide-react";
 import { GHANA_UNIVERSITIES } from "@/data/universities";
 import { Badge } from "@/components/ui/badge";
+import { ScrollReveal } from "@/components/ui/scroll-reveal";
 
 function UniAvatar({ name, shortName, logoUrl }: { name: string; shortName: string; logoUrl?: string }) {
   const [imgError, setImgError] = useState(false);
@@ -38,55 +39,56 @@ export function UniversitiesGrid() {
   return (
     <section id="universities" className="py-20 bg-slate-50/70 border-t border-slate-200/80 px-4 sm:px-6">
       <div className="mx-auto max-w-5xl">
-        <div className="text-center max-w-2xl mx-auto mb-14">
+        <ScrollReveal variant="fade-up" className="text-center max-w-2xl mx-auto mb-14">
           <h2 className="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
             All Major Ghanaian Universities in One Place
           </h2>
           <p className="mt-3 text-sm sm:text-base text-slate-600">
             No need to visit 10 different university portals. PassMarkGH aggregates official admission cutoffs and prerequisites across Ghana.
           </p>
-        </div>
+        </ScrollReveal>
 
         {/* Grid Container with Bottom Fade & Blur Overlay */}
         <div className="relative">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 pb-16">
             {displayedUnis.map((uni, idx) => {
-              const isFaded = idx >= 6; // Bottom row gets subtle blur and opacity reduction
+              const isFaded = idx >= 6;
               return (
-                <div
-                  key={uni.id}
-                  className={`rounded-2xl border border-slate-200/90 bg-white p-5 shadow-xs transition-all flex flex-col justify-between group ${
-                    isFaded
-                      ? "opacity-40 blur-[1.5px] select-none pointer-events-none"
-                      : "hover:shadow-soft hover:border-blue-300"
-                  }`}
-                >
-                  <div>
-                    <div className="flex items-center justify-between mb-3">
-                      <UniAvatar name={uni.name} shortName={uni.shortName} logoUrl={uni.logoUrl} />
-                      <Badge variant="secondary" className="text-[10px] uppercase font-bold">
-                        {uni.type}
-                      </Badge>
+                <ScrollReveal key={uni.id} variant="zoom-in" delay={Math.min(idx, 5) * 80} threshold={0.08}>
+                  <div
+                    className={`rounded-2xl border border-slate-200/90 bg-white p-5 shadow-xs transition-all flex flex-col justify-between group ${
+                      isFaded
+                        ? "opacity-40 blur-[1.5px] select-none pointer-events-none"
+                        : "hover:shadow-soft hover:border-blue-300"
+                    }`}
+                  >
+                    <div>
+                      <div className="flex items-center justify-between mb-3">
+                        <UniAvatar name={uni.name} shortName={uni.shortName} logoUrl={uni.logoUrl} />
+                        <Badge variant="secondary" className="text-[10px] uppercase font-bold">
+                          {uni.type}
+                        </Badge>
+                      </div>
+                      <h3 className="text-base font-bold text-slate-900 leading-snug">
+                        {uni.name}
+                      </h3>
+                      <div className="mt-2 flex items-center text-xs text-slate-500 gap-1.5">
+                        <MapPin className="h-3.5 w-3.5 text-slate-400" />
+                        <span>{uni.location}, {uni.region}</span>
+                      </div>
                     </div>
-                    <h3 className="text-base font-bold text-slate-900 leading-snug">
-                      {uni.name}
-                    </h3>
-                    <div className="mt-2 flex items-center text-xs text-slate-500 gap-1.5">
-                      <MapPin className="h-3.5 w-3.5 text-slate-400" />
-                      <span>{uni.location}, {uni.region}</span>
-                    </div>
-                  </div>
 
-                  <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] text-emerald-700 font-semibold">
-                    <span className="flex items-center gap-1">
-                      <CheckCircle className="h-3.5 w-3.5 text-emerald-600" />
-                      Cutoffs Verified
-                    </span>
-                    <span className="text-slate-400 group-hover:text-brand-blue transition-colors">
-                      {uni.shortName}
-                    </span>
+                    <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] text-emerald-700 font-semibold">
+                      <span className="flex items-center gap-1">
+                        <CheckCircle className="h-3.5 w-3.5 text-emerald-600" />
+                        Cutoffs Verified
+                      </span>
+                      <span className="text-slate-400 group-hover:text-brand-blue transition-colors">
+                        {uni.shortName}
+                      </span>
+                    </div>
                   </div>
-                </div>
+                </ScrollReveal>
               );
             })}
           </div>
