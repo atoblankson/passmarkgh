@@ -142,14 +142,14 @@ export function SearchableSelect({
               </span>
             )}
             <ChevronDown
-              className={cn("h-4 w-4 transition-transform duration-200", isOpen && "rotate-180 text-brand-blue")}
+              className={cn("h-4 w-4 transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]", isOpen && "rotate-180 text-brand-blue")}
             />
           </div>
         </button>
 
         {/* Dropdown Menu */}
         {isOpen && (
-          <div className="absolute left-0 right-0 top-full z-50 mt-1.5 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl animate-in fade-in zoom-in-95 duration-150">
+          <div className="absolute left-0 right-0 top-full z-50 mt-1.5 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] animate-in fade-in slide-in-from-top-2 duration-200">
             {/* Search Input Header */}
             <div className="border-b border-slate-100 p-2.5 bg-slate-50/70">
               <div className="relative">
