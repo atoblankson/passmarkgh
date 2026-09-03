@@ -19,8 +19,6 @@
 # misc
 .DS_Store
 *.pem
-Thumbs.db
-scratch/
 
 # debug
 npm-debug.log*
@@ -28,12 +26,8 @@ yarn-debug.log*
 yarn-error.log*
 
 # local env files
-.env
 .env*.local
-.env.production
-.env.development
-.env.test
-!.env.example
+.env
 
 # vercel
 .vercel
@@ -42,6 +36,10 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# IDEs
-.vscode/
-.idea/
+# agents / scratch
+scratch/
+.agents/
+
+# Windows artifacts
+Thumbs.db
+desktop.ini
