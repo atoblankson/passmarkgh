@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Sora } from "next/font/google";
+import { Analytics } from "@vercel/analytics/react";
 import "./globals.css";
 
 const sora = Sora({
@@ -208,6 +209,7 @@ export default function RootLayout({
       </head>
       <body className="font-sans bg-white text-slate-900 antialiased min-h-screen flex flex-col">
         {children}
+        <Analytics />
       </body>
     </html>
   );

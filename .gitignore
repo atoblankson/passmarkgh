@@ -44,3 +44,9 @@ scratch/
 # Windows artifacts
 Thumbs.db
 desktop.ini
+
+# Admin (Local machine only - never commit or deploy)
+src/app/admin/
+src/app/api/admin/
+src/components/admin/
+src/lib/admin/
