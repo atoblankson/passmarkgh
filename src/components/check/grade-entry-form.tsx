@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useMemo, useCallback } from "react";
+import React, { useState, useMemo, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import { WizardStepIndicator } from "./wizard-step-indicator";
 import { Step1ExamProfile, ExamOption, GenderOption } from "./step-1-exam-profile";
@@ -32,12 +32,12 @@ export function GradeEntryForm() {
   // Wizard step (1, 2, 3)
   const [currentStep, setCurrentStep] = useState<1 | 2 | 3>(1);
 
-  // Step 1 states
-  const [examType, setExamType] = useState<ExamOption>("WASSCE");
-  const [gender, setGender] = useState<GenderOption>("female");
-  const [selectedStreamId, setSelectedStreamId] = useState<string>("science");
+  // Step 1 states - ALWAYS start empty so user explicitly picks their own profile
+  const [examType, setExamType] = useState<ExamOption | "">("");
+  const [gender, setGender] = useState<GenderOption | "">("");
+  const [selectedStreamId, setSelectedStreamId] = useState<string>("");
 
-  // Step 2 states (Core subjects & 2nd sitting)
+  // Step 2 states (Core subjects & 2nd sitting) - start empty
   const [coreGrades, setCoreGrades] = useState<Record<string, WassceGrade | "">>(DEFAULT_CORE_GRADES);
   const [hasSecondSitting, setHasSecondSitting] = useState<boolean>(false);
   const [secondSittingExam, setSecondSittingExam] = useState<string>("NOVDEC");
@@ -55,30 +55,6 @@ export function GradeEntryForm() {
     setSelectedStreamId(streamId);
     setElectives([]);
   };
-
-  // Restore saved state from localStorage if available
-  useEffect(() => {
-    try {
-      const saved = localStorage.getItem("passmark_profile");
-      if (saved) {
-        const parsed = JSON.parse(saved);
-        if (parsed.examType) setExamType(parsed.examType);
-        if (parsed.gender) setGender(parsed.gender);
-        if (parsed.selectedStreamId) setSelectedStreamId(parsed.selectedStreamId);
-        if (parsed.coreGrades) setCoreGrades(parsed.coreGrades);
-        if (parsed.hasSecondSitting !== undefined) {
-          setHasSecondSitting(parsed.hasSecondSitting);
-        }
-        if (parsed.secondSittingExam) setSecondSittingExam(parsed.secondSittingExam);
-        if (parsed.secondSittingGrades) setSecondSittingGrades(parsed.secondSittingGrades);
-        if (parsed.electives && Array.isArray(parsed.electives)) {
-          setElectives(parsed.electives);
-        }
-      }
-    } catch {
-      // Ignore parse error
-    }
-  }, []);
 
   // Update a 1st sitting core grade
   const handleCoreGradeChange = (subject: string, grade: WassceGrade) => {
@@ -181,7 +157,7 @@ export function GradeEntryForm() {
       allStudentGrades,
       calculation.aggregate,
       OFFICIAL_PROGRAMMES,
-      gender
+      (gender || "prefer_not_to_say") as GenderOption
     );
     return matches.filter((m) => m.qualified).length;
   }, [allStudentGrades, calculation, gender]);
@@ -190,8 +166,8 @@ export function GradeEntryForm() {
   const handleProceedToResults = useCallback(() => {
     try {
       const resultSignature = generateGradeSignature({
-        gender,
-        selectedStreamId,
+        gender: gender || "prefer_not_to_say",
+        selectedStreamId: selectedStreamId || "science",
         allGrades: allStudentGrades,
       });
       const checkId = `chk_${Date.now()}_${Math.random().toString(36).substring(2, 7)}`;
@@ -199,9 +175,9 @@ export function GradeEntryForm() {
       const payload = {
         checkId,
         resultSignature,
-        examType,
-        gender,
-        selectedStreamId,
+        examType: examType || "WASSCE",
+        gender: gender || "prefer_not_to_say",
+        selectedStreamId: selectedStreamId || "science",
         coreGrades,
         hasSecondSitting,
         secondSittingExam,

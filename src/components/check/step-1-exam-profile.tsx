@@ -10,9 +10,9 @@ export type ExamOption = "WASSCE" | "SSSCE" | "NOVDEC";
 export type GenderOption = "male" | "female" | "prefer_not_to_say";
 
 interface Step1ExamProfileProps {
-  examType: ExamOption;
+  examType: ExamOption | "";
   onExamTypeChange: (type: ExamOption) => void;
-  gender: GenderOption;
+  gender: GenderOption | "";
   onGenderChange: (gender: GenderOption) => void;
   selectedStreamId: string;
   onStreamChange: (streamId: string) => void;
@@ -40,6 +40,7 @@ export function Step1ExamProfile({
   onStreamChange,
   onContinue,
 }: Step1ExamProfileProps) {
+  const isStep1Complete = Boolean(examType && gender && selectedStreamId);
   return (
     <Card className="border-slate-200/90 shadow-sm bg-white rounded-3xl p-5 sm:p-7 space-y-6 animate-in fade-in zoom-in-98 duration-200">
       {/* 1. Which Exam Did You Take? */}
@@ -136,10 +137,11 @@ export function Step1ExamProfile({
       <div className="pt-3">
         <Button
           type="button"
+          disabled={!isStep1Complete}
           onClick={onContinue}
-          className="w-full h-12 sm:h-13 bg-brand-blue hover:bg-brand-darkBlue text-white font-bold rounded-2xl shadow-md text-sm sm:text-base gap-2 transition-all active:scale-[0.99]"
+          className="w-full h-12 sm:h-13 bg-brand-blue hover:bg-brand-darkBlue text-white font-bold rounded-2xl shadow-md text-sm sm:text-base gap-2 transition-all active:scale-[0.99] disabled:opacity-50 disabled:cursor-not-allowed"
         >
-          <span>Continue to Grade Entry</span>
+          <span>{isStep1Complete ? "Continue to Grade Entry" : "Select Exam, Gender & Programme to Continue"}</span>
           <ArrowRight className="h-4 w-4" />
         </Button>
       </div>
