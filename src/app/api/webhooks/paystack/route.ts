@@ -7,9 +7,13 @@ export const dynamic = "force-dynamic";
 
 export async function POST(req: NextRequest) {
   try {
-    const secretKey = getPaystackSecretKey();
-    if (!secretKey) {
-      console.error("Paystack Webhook: PAYSTACK_SECRET_KEY is missing in environment variables.");
+    const primaryKey = getPaystackSecretKey();
+    const liveKey = process.env.PAYSTACK_LIVE_SECRET_KEY;
+    const testKey = process.env.PAYSTACK_TEST_SECRET_KEY || process.env.PAYSTACK_SECRET_KEY;
+    const candidateKeys = Array.from(new Set([primaryKey, liveKey, testKey].filter(Boolean))) as string[];
+
+    if (candidateKeys.length === 0) {
+      console.error("Paystack Webhook: No Paystack secret key configured.");
       return NextResponse.json({ message: "Server configuration error" }, { status: 500 });
     }
 
@@ -19,9 +23,12 @@ export async function POST(req: NextRequest) {
     }
 
     const rawBody = await req.text();
-    const hash = crypto.createHmac("sha512", secretKey).update(rawBody).digest("hex");
+    const isValidSignature = candidateKeys.some((k) => {
+      const hash = crypto.createHmac("sha512", k).update(rawBody).digest("hex");
+      return hash === signature;
+    });
 
-    if (hash !== signature) {
+    if (!isValidSignature) {
       console.warn("Paystack Webhook: Invalid signature attempt rejected.");
       return NextResponse.json({ message: "Invalid signature" }, { status: 401 });
     }

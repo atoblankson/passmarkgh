@@ -15,13 +15,15 @@ export async function POST(req: NextRequest) {
 
     const host = req.headers.get("host") || "localhost:3000";
     const protocol = req.headers.get("x-forwarded-proto") || "http";
-    const defaultCallback = `${protocol}://${host}/results`;
+    const cookieMode = req.cookies.get("pm_paystack_mode")?.value;
+    const activeMode = cookieMode || process.env.PAYSTACK_MODE;
 
     const paystackRes = await initializePaystackTransaction({
       email,
       amountInCedis: Number(amountInCedis) || 15,
       metadata: metadata || {},
       callbackUrl: callbackUrl || defaultCallback,
+      mode: activeMode,
     });
 
     if (!paystackRes.status || !paystackRes.data) {

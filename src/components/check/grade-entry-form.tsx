@@ -218,6 +218,23 @@ export function GradeEntryForm() {
       // Save profile in localStorage
       localStorage.setItem("passmark_profile", JSON.stringify(payload));
 
+      // Track real check in local admin store (localhost only)
+      if (
+        typeof window !== "undefined" &&
+        (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1")
+      ) {
+        fetch("/api/admin/track", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            type: "check",
+            aggregate: calculation.aggregate,
+            stream: selectedStreamId,
+            qualifiedCount: estimatedMatches,
+          }),
+        }).catch(() => {});
+      }
+
       // Route to results
       router.push("/results");
     } catch {

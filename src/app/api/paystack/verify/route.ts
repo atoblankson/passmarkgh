@@ -16,7 +16,10 @@ export async function GET(req: NextRequest) {
       );
     }
 
-    const paystackRes = await verifyPaystackTransaction(reference);
+    const cookieMode = req.cookies.get("pm_paystack_mode")?.value;
+    const activeMode = cookieMode || process.env.PAYSTACK_MODE;
+
+    const paystackRes = await verifyPaystackTransaction(reference, activeMode);
 
     if (!paystackRes.status || !paystackRes.data) {
       return NextResponse.json(

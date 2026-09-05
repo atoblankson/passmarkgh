@@ -3,6 +3,7 @@ export interface InitializePaymentParams {
   amountInCedis: number;
   metadata?: Record<string, unknown>;
   callbackUrl?: string;
+  mode?: string;
 }
 
 export interface PaystackInitResponse {
@@ -38,8 +39,8 @@ export interface PaystackVerifyResponse {
  * Resolves the active Paystack Secret Key.
  * Supports PAYSTACK_MODE="live" | "test" or direct PAYSTACK_SECRET_KEY.
  */
-export function getPaystackSecretKey(): string | undefined {
-  const mode = process.env.PAYSTACK_MODE?.toLowerCase();
+export function getPaystackSecretKey(modeOverride?: string): string | undefined {
+  const mode = (modeOverride || process.env.PAYSTACK_MODE || "test").toLowerCase();
   if (mode === "live") {
     return process.env.PAYSTACK_LIVE_SECRET_KEY || process.env.PAYSTACK_SECRET_KEY;
   }
@@ -61,8 +62,9 @@ export async function initializePaystackTransaction({
   amountInCedis,
   metadata = {},
   callbackUrl,
+  mode,
 }: InitializePaymentParams): Promise<PaystackInitResponse> {
-  const secretKey = getPaystackSecretKey();
+  const secretKey = getPaystackSecretKey(mode);
   if (!secretKey || secretKey.includes("your_secret_key_here")) {
     return {
       status: false,
@@ -116,9 +118,10 @@ export async function initializePaystackTransaction({
  * Verify a transaction on Paystack Server
  */
 export async function verifyPaystackTransaction(
-  reference: string
+  reference: string,
+  mode?: string
 ): Promise<PaystackVerifyResponse> {
-  const secretKey = getPaystackSecretKey();
+  const secretKey = getPaystackSecretKey(mode);
   if (!secretKey || secretKey.includes("your_secret_key_here")) {
     return {
       status: false,
