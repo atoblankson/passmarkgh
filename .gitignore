@@ -48,10 +48,10 @@ desktop.ini
 # Admin UI (Local machine only - never commit or deploy)
 src/app/admin/
 src/components/admin/
-src/lib/admin/
 src/data/analytics_store.json
 src/data/admin_config.json
 
-# Admin API routes ARE committed so they work in production
+# Admin API routes + lib ARE committed so they work in production
 # src/app/api/admin/  <-- intentionally NOT ignored
+# src/lib/admin/      <-- intentionally NOT ignored (needed by API routes)
 
