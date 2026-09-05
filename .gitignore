@@ -50,3 +50,5 @@ src/app/admin/
 src/app/api/admin/
 src/components/admin/
 src/lib/admin/
+src/data/analytics_store.json
+
