@@ -35,6 +35,25 @@ export interface PaystackVerifyResponse {
 }
 
 /**
+ * Resolves the active Paystack Secret Key.
+ * Supports PAYSTACK_MODE="live" | "test" or direct PAYSTACK_SECRET_KEY.
+ */
+export function getPaystackSecretKey(): string | undefined {
+  const mode = process.env.PAYSTACK_MODE?.toLowerCase();
+  if (mode === "live") {
+    return process.env.PAYSTACK_LIVE_SECRET_KEY || process.env.PAYSTACK_SECRET_KEY;
+  }
+  if (mode === "test") {
+    return process.env.PAYSTACK_TEST_SECRET_KEY || process.env.PAYSTACK_SECRET_KEY;
+  }
+  return (
+    process.env.PAYSTACK_SECRET_KEY ||
+    process.env.PAYSTACK_LIVE_SECRET_KEY ||
+    process.env.PAYSTACK_TEST_SECRET_KEY
+  );
+}
+
+/**
  * Initialize a transaction on Paystack Server
  */
 export async function initializePaystackTransaction({
@@ -43,7 +62,7 @@ export async function initializePaystackTransaction({
   metadata = {},
   callbackUrl,
 }: InitializePaymentParams): Promise<PaystackInitResponse> {
-  const secretKey = process.env.PAYSTACK_SECRET_KEY;
+  const secretKey = getPaystackSecretKey();
   if (!secretKey || secretKey.includes("your_secret_key_here")) {
     return {
       status: false,
@@ -99,7 +118,7 @@ export async function initializePaystackTransaction({
 export async function verifyPaystackTransaction(
   reference: string
 ): Promise<PaystackVerifyResponse> {
-  const secretKey = process.env.PAYSTACK_SECRET_KEY;
+  const secretKey = getPaystackSecretKey();
   if (!secretKey || secretKey.includes("your_secret_key_here")) {
     return {
       status: false,

@@ -1,12 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
 import crypto from "crypto";
 import { createClient } from "@/lib/supabase/server";
+import { getPaystackSecretKey } from "@/lib/paystack";
 
 export const dynamic = "force-dynamic";
 
 export async function POST(req: NextRequest) {
   try {
-    const secretKey = process.env.PAYSTACK_SECRET_KEY;
+    const secretKey = getPaystackSecretKey();
     if (!secretKey) {
       console.error("Paystack Webhook: PAYSTACK_SECRET_KEY is missing in environment variables.");
       return NextResponse.json({ message: "Server configuration error" }, { status: 500 });
