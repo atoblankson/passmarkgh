@@ -1,11 +1,7 @@
-import { NextRequest, NextResponse } from "next/server";
+﻿import { NextRequest, NextResponse } from "next/server";
 import { initializePaystackTransaction } from "@/lib/paystack";
 import { createAdminSupabaseClient } from "@/lib/supabase/admin-client";
 
-/**
- * Resolves the active Paystack mode from Supabase (source of truth),
- * falling back to cookie -> env var -> "test" in that order.
- */
 async function resolveActiveMode(req: NextRequest): Promise<string> {
   try {
     const supabase = createAdminSupabaseClient();
@@ -19,10 +15,9 @@ async function resolveActiveMode(req: NextRequest): Promise<string> {
       return data.value;
     }
   } catch {
-    // Supabase unavailable � fall through to env var
+    // Supabase unavailable — fall through to env var
   }
 
-  // Fallback chain: cookie -> env var -> "test"
   const cookieMode = req.cookies.get("pm_paystack_mode")?.value;
   return cookieMode || process.env.PAYSTACK_MODE || "test";
 }

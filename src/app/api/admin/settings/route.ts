@@ -1,13 +1,8 @@
-import { NextRequest, NextResponse } from "next/server";
+﻿import { NextRequest, NextResponse } from "next/server";
 import { createAdminSupabaseClient } from "@/lib/supabase/admin-client";
 
 export const dynamic = "force-dynamic";
 
-/**
- * GET /api/admin/settings
- * Returns the active Paystack mode from Supabase admin_settings table.
- * Falls back to env var PAYSTACK_MODE if Supabase is unavailable.
- */
 export async function GET(_req: NextRequest) {
   try {
     const supabase = createAdminSupabaseClient();
@@ -18,7 +13,6 @@ export async function GET(_req: NextRequest) {
       .single();
 
     if (error || !data) {
-      // Graceful fallback to env var
       const fallback = process.env.PAYSTACK_MODE || "test";
       return NextResponse.json({
         status: true,
@@ -42,11 +36,6 @@ export async function GET(_req: NextRequest) {
   }
 }
 
-/**
- * POST /api/admin/settings
- * Upserts Paystack mode into Supabase admin_settings table.
- * This persists across all serverless function instances and environments.
- */
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
@@ -86,7 +75,6 @@ export async function POST(req: NextRequest) {
       },
     });
 
-    // Also set cookie so same-session requests are immediately aware
     res.cookies.set("pm_paystack_mode", paystackMode, {
       path: "/",
       maxAge: 31536000,

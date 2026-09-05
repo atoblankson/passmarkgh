@@ -1,8 +1,8 @@
-import { createClient as createSupabaseClient } from "@supabase/supabase-js";
+﻿import { createClient as createSupabaseClient } from "@supabase/supabase-js";
 
 /**
  * Lightweight Supabase client for server-only API routes that don't need cookie-based auth.
- * Uses the anon key � safe for reading/writing admin_settings via RLS policies.
+ * Uses the anon key — safe for reading/writing admin_settings via RLS policies.
  */
 export function createAdminSupabaseClient() {
   const url =
