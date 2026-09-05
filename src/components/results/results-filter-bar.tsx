@@ -120,7 +120,10 @@ export function ResultsFilterBar({
 
       {/* University Horizontal Scrollable Pills */}
       <div className="space-y-1.5">
-        <div className="flex items-center gap-1.5 overflow-x-auto pb-1.5 no-scrollbar">
+        <div
+          className="flex items-center gap-1.5 overflow-x-auto pb-1.5 no-scrollbar"
+          style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+        >
           <button
             type="button"
             onClick={() => onUniversityChange("all")}
@@ -158,7 +161,10 @@ export function ResultsFilterBar({
 
       {/* Category Pills */}
       {categories.length > 1 && (
-        <div className="flex items-center gap-1.5 overflow-x-auto pb-1 no-scrollbar">
+        <div
+          className="flex items-center gap-1.5 overflow-x-auto pb-1 no-scrollbar"
+          style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+        >
           <button
             type="button"
             onClick={() => onCategoryChange("all")}

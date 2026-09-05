@@ -31,6 +31,31 @@ export interface InstitutionEntry {
   }>;
 }
 
+const LOGO_BY_SHORTNAME: Record<string, string> = {
+  "ug legon": "/logos/ug.png",
+  "ug": "/logos/ug.png",
+  "university of ghana": "/logos/ug.png",
+  "knust": "/logos/knust.png",
+  "ucc": "/logos/ucc.png",
+  "gctu": "/logos/gctu.png",
+  "uds": "/logos/uds.png",
+  "umat": "/logos/umat.png",
+  "upsa": "/logos/upsa.png",
+  "uew": "/logos/uew.png",
+  "ashesi": "/logos/ashesi.png",
+  "academic city": "/logos/academiccity.png",
+  "academiccity": "/logos/academiccity.png",
+};
+
+export function resolveUniversityLogo(shortName?: string): string | undefined {
+  if (!shortName) return undefined;
+  const key = shortName.toLowerCase().trim();
+  if (LOGO_BY_SHORTNAME[key]) return LOGO_BY_SHORTNAME[key];
+  const clean = key.replace(/[^a-z0-9]/g, "");
+  if (LOGO_BY_SHORTNAME[clean]) return LOGO_BY_SHORTNAME[clean];
+  return undefined;
+}
+
 // Convert raw JSON to standard University and Programme arrays
 export function getLoadedUniversities(): University[] {
   return (rawData.institutions as InstitutionEntry[]).map((inst, index) => ({
@@ -41,7 +66,7 @@ export function getLoadedUniversities(): University[] {
     region: inst.university.region,
     type: inst.university.type,
     website: inst.officialPortal,
-    logoUrl: `/logos/${inst.university.shortName.toLowerCase().replace(/[^a-z0-9]/g, "")}.png`,
+    logoUrl: resolveUniversityLogo(inst.university.shortName),
   }));
 }
 

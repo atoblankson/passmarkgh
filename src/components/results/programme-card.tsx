@@ -64,7 +64,8 @@ export function ProgrammeCard({ match }: ProgrammeCardProps) {
                   alt={`${university.name} logo`}
                   className="h-full w-full object-contain"
                   onError={() => setImgError(true)}
-                  loading="lazy"
+                  loading="eager"
+                  decoding="async"
                 />
               ) : (
                 <span className="text-[11px] font-black text-brand-blue">
