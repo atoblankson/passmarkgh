@@ -1,28 +1,8 @@
-import { NextRequest, NextResponse } from "next/server";
+﻿import { NextRequest, NextResponse } from "next/server";
 import { verifyPaystackTransaction } from "@/lib/paystack";
 import { createClient } from "@/lib/supabase/server";
-import { createAdminSupabaseClient } from "@/lib/supabase/admin-client";
 
 export const dynamic = "force-dynamic";
-
-async function resolveActiveMode(req: NextRequest): Promise<string> {
-  try {
-    const supabase = createAdminSupabaseClient();
-    const { data, error } = await supabase
-      .from("admin_settings")
-      .select("value")
-      .eq("key", "paystack_mode")
-      .single();
-
-    if (!error && data?.value) {
-      return data.value;
-    }
-  } catch {
-    // Supabase unavailable — fall through
-  }
-  const cookieMode = req.cookies.get("pm_paystack_mode")?.value;
-  return cookieMode || process.env.PAYSTACK_MODE || "test";
-}
 
 export async function GET(req: NextRequest) {
   try {
@@ -36,7 +16,8 @@ export async function GET(req: NextRequest) {
       );
     }
 
-    const activeMode = await resolveActiveMode(req);
+    // Mode comes from Vercel env var PAYSTACK_MODE (live or test)
+    const activeMode = process.env.PAYSTACK_MODE || "test";
 
     const paystackRes = await verifyPaystackTransaction(reference, activeMode);
 
@@ -49,7 +30,6 @@ export async function GET(req: NextRequest) {
 
     const isSuccessful = paystackRes.data.status === "success";
 
-    // Attempt to persist verified payment in Supabase (graceful fallback)
     if (isSuccessful) {
       try {
         const supabase = await createClient();
@@ -65,7 +45,7 @@ export async function GET(req: NextRequest) {
           },
         ]);
       } catch (dbErr) {
-        console.warn("Supabase payment persistence notice (using client storage):", dbErr);
+        console.warn("Supabase payment persistence notice:", dbErr);
       }
     }
 
@@ -79,9 +59,6 @@ export async function GET(req: NextRequest) {
   } catch (error: unknown) {
     console.error("Paystack Verify Error:", error);
     const message = error instanceof Error ? error.message : "Internal server error verifying payment";
-    return NextResponse.json(
-      { status: false, message },
-      { status: 500 }
-    );
+    return NextResponse.json({ status: false, message }, { status: 500 });
   }
 }

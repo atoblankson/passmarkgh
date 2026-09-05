@@ -1,26 +1,5 @@
 ﻿import { NextRequest, NextResponse } from "next/server";
 import { initializePaystackTransaction } from "@/lib/paystack";
-import { createAdminSupabaseClient } from "@/lib/supabase/admin-client";
-
-async function resolveActiveMode(req: NextRequest): Promise<string> {
-  try {
-    const supabase = createAdminSupabaseClient();
-    const { data, error } = await supabase
-      .from("admin_settings")
-      .select("value")
-      .eq("key", "paystack_mode")
-      .single();
-
-    if (!error && data?.value) {
-      return data.value;
-    }
-  } catch {
-    // Supabase unavailable — fall through to env var
-  }
-
-  const cookieMode = req.cookies.get("pm_paystack_mode")?.value;
-  return cookieMode || process.env.PAYSTACK_MODE || "test";
-}
 
 export async function POST(req: NextRequest) {
   try {
@@ -38,7 +17,8 @@ export async function POST(req: NextRequest) {
     const protocol = req.headers.get("x-forwarded-proto") || "http";
     const defaultCallback = `${protocol}://${host}/results`;
 
-    const activeMode = await resolveActiveMode(req);
+    // Mode comes from Vercel env var PAYSTACK_MODE (live or test)
+    const activeMode = process.env.PAYSTACK_MODE || "test";
 
     const paystackRes = await initializePaystackTransaction({
       email,

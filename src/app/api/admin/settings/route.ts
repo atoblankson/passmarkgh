@@ -1,89 +1,27 @@
-import { NextRequest, NextResponse } from "next/server";
-import { createAdminSupabaseClient } from "@/lib/supabase/admin-client";
+﻿import { NextResponse } from "next/server";
 
 export const dynamic = "force-dynamic";
 
+// Settings are managed via Vercel environment variables.
+// PAYSTACK_MODE=live or PAYSTACK_MODE=test in Vercel dashboard.
 export async function GET() {
-  try {
-    const supabase = createAdminSupabaseClient();
-    const { data, error } = await supabase
-      .from("admin_settings")
-      .select("value, updated_at")
-      .eq("key", "paystack_mode")
-      .single();
-
-    if (error || !data) {
-      const fallback = process.env.PAYSTACK_MODE || "test";
-      return NextResponse.json({
-        status: true,
-        data: { paystackMode: fallback, updatedAt: new Date().toISOString() },
-      });
-    }
-
-    return NextResponse.json({
-      status: true,
-      data: {
-        paystackMode: data.value === "live" ? "live" : "test",
-        updatedAt: data.updated_at,
-      },
-    });
-  } catch {
-    const fallback = process.env.PAYSTACK_MODE || "test";
-    return NextResponse.json({
-      status: true,
-      data: { paystackMode: fallback, updatedAt: new Date().toISOString() },
-    });
-  }
+  const mode = process.env.PAYSTACK_MODE || "test";
+  return NextResponse.json({
+    status: true,
+    data: {
+      paystackMode: mode === "live" ? "live" : "test",
+      updatedAt: new Date().toISOString(),
+    },
+  });
 }
 
-export async function POST(req: NextRequest) {
-  try {
-    const body = await req.json();
-    const { paystackMode } = body;
-
-    if (!paystackMode || !["test", "live"].includes(paystackMode)) {
-      return NextResponse.json(
-        { status: false, message: "Invalid paystackMode. Must be 'test' or 'live'." },
-        { status: 400 }
-      );
-    }
-
-    const supabase = createAdminSupabaseClient();
-    const { error } = await supabase.from("admin_settings").upsert(
-      {
-        key: "paystack_mode",
-        value: paystackMode,
-        updated_at: new Date().toISOString(),
-      },
-      { onConflict: "key" }
-    );
-
-    if (error) {
-      console.error("Supabase admin_settings upsert error:", error);
-      return NextResponse.json(
-        { status: false, message: "Failed to save settings to database: " + error.message },
-        { status: 500 }
-      );
-    }
-
-    const res = NextResponse.json({
-      status: true,
-      message: `Paystack mode switched to ${paystackMode.toUpperCase()} and persisted to database.`,
-      data: {
-        paystackMode,
-        updatedAt: new Date().toISOString(),
-      },
-    });
-
-    res.cookies.set("pm_paystack_mode", paystackMode, {
-      path: "/",
-      maxAge: 31536000,
-      sameSite: "lax",
-    });
-
-    return res;
-  } catch (err: unknown) {
-    const message = err instanceof Error ? err.message : "Error saving admin settings";
-    return NextResponse.json({ status: false, message }, { status: 500 });
-  }
+export async function POST() {
+  return NextResponse.json(
+    {
+      status: false,
+      message:
+        "Mode switching via API is disabled. Change PAYSTACK_MODE in your Vercel environment variables.",
+    },
+    { status: 403 }
+  );
 }
