@@ -37,8 +37,8 @@ export default function HomePage() {
           </h1>
 
           {/* Subtitle */}
-          <p className="mt-6 max-w-2xl mx-auto text-base sm:text-lg text-slate-600 leading-relaxed text-balance">
-            Stop wasting ₵150+ on blind applications. Enter your WASSCE grades to instantly calculate your official WAEC aggregate and match with every eligible programme across all Ghanaian universities.
+          <p className="mt-6 max-w-xl mx-auto text-base sm:text-lg font-medium text-slate-900 leading-relaxed text-balance">
+            Stop wasting ₵150+ on rejected forms. Enter your WASSCE grades to calculate your aggregate and match with every programme you qualify for across Ghana.
           </p>
 
           {/* Inline Action Bar */}
