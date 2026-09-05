@@ -4,7 +4,7 @@ import { initializePaystackTransaction } from "@/lib/paystack";
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
-    const { email, amountInCedis = 15, metadata, callbackUrl } = body;
+    const { email, amountInCedis = 15, metadata, callbackUrl, passFeesToCustomer = true } = body;
 
     if (!email || typeof email !== "string" || !email.includes("@")) {
       return NextResponse.json(
@@ -25,6 +25,7 @@ export async function POST(req: NextRequest) {
       metadata: metadata || {},
       callbackUrl: callbackUrl || defaultCallback,
       mode: activeMode,
+      passFeesToCustomer: passFeesToCustomer !== false,
     });
 
     if (!paystackRes.status || !paystackRes.data) {

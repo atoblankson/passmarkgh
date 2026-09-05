@@ -4,6 +4,7 @@ export interface InitializePaymentParams {
   metadata?: Record<string, unknown>;
   callbackUrl?: string;
   mode?: string;
+  passFeesToCustomer?: boolean;
 }
 
 export interface PaystackInitResponse {
@@ -36,6 +37,43 @@ export interface PaystackVerifyResponse {
 }
 
 /**
+ * Standard Ghana Paystack fee rate is 1.95% (0.0195).
+ * Paystack charges 1.95% on local transactions (Mobile Money & local cards).
+ */
+export const PAYSTACK_GH_FEE_RATE = 0.0195;
+
+/**
+ * Computes the gross amount (in pesewas) so that after Paystack deducts
+ * its 1.95% transaction fee, the merchant receives the exact clean net amount.
+ *
+ * Formula:
+ *   Net = Gross * (1 - feeRate)
+ *   Gross = Net / (1 - feeRate)
+ *
+ * For GHS 15.00 net:
+ *   Gross = 15.00 / (1 - 0.0195) = 15.2983... => 15.30 GHS (1530 pesewas)
+ *   Paystack fee: 15.30 * 1.95% = 0.29835 GHS => 0.30 GHS (30 pesewas)
+ *   Merchant settlement: 15.30 - 0.30 = 15.00 GHS clean.
+ */
+export function calculateGrossWithPaystackFee(netInCedis: number = 15): {
+  grossInPesewas: number;
+  grossInCedis: number;
+  feeInCedis: number;
+  netInCedis: number;
+} {
+  const grossInPesewas = Math.ceil((netInCedis / (1 - PAYSTACK_GH_FEE_RATE)) * 100);
+  const grossInCedis = grossInPesewas / 100;
+  const feeInCedis = Math.round((grossInCedis - netInCedis) * 100) / 100;
+
+  return {
+    grossInPesewas,
+    grossInCedis,
+    feeInCedis,
+    netInCedis,
+  };
+}
+
+/**
  * Resolves the active Paystack Secret Key.
  * Supports PAYSTACK_MODE="live" | "test" or direct PAYSTACK_SECRET_KEY.
  */
@@ -63,6 +101,7 @@ export async function initializePaystackTransaction({
   metadata = {},
   callbackUrl,
   mode,
+  passFeesToCustomer = true,
 }: InitializePaymentParams): Promise<PaystackInitResponse> {
   const secretKey = getPaystackSecretKey(mode);
   if (!secretKey || secretKey.includes("your_secret_key_here")) {
@@ -72,15 +111,30 @@ export async function initializePaystackTransaction({
     };
   }
 
-  // Convert Cedis to Pesewas (1 GHS = 100 Pesewas)
-  const amountInPesewas = Math.round(amountInCedis * 100);
+  // Calculate gross pesewas to pass Paystack processing fee to customer
+  const feeCalculation = passFeesToCustomer
+    ? calculateGrossWithPaystackFee(amountInCedis)
+    : {
+        grossInPesewas: Math.round(amountInCedis * 100),
+        grossInCedis: amountInCedis,
+        feeInCedis: 0,
+        netInCedis: amountInCedis,
+      };
+
+  const amountInPesewas = feeCalculation.grossInPesewas;
 
   const payload: Record<string, unknown> = {
     email,
     amount: amountInPesewas,
     currency: "GHS",
     channels: ["mobile_money", "card"],
-    metadata,
+    metadata: {
+      ...metadata,
+      base_amount_cedis: amountInCedis,
+      charged_amount_cedis: feeCalculation.grossInCedis,
+      processing_fee_cedis: feeCalculation.feeInCedis,
+      fee_passed_to_customer: passFeesToCustomer,
+    },
   };
 
   if (callbackUrl) {
