@@ -251,6 +251,7 @@ export function GradeEntryForm() {
     electives,
     calculation,
     allStudentGrades,
+    estimatedMatches,
     router,
   ]);
 
