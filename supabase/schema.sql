@@ -66,3 +66,40 @@ create policy "Allow read waitlist"
   on public.waitlist
   for select
   using (true);
+
+-- ─────────────────────────────────────────────────────────────────────────────
+-- PassMarkGH Supabase Schema — Admin Settings Table
+-- Persists admin configuration (e.g. Paystack mode) across serverless instances.
+-- This is the source of truth for runtime settings — changes here affect production immediately.
+-- ─────────────────────────────────────────────────────────────────────────────
+
+create table if not exists public.admin_settings (
+  key text primary key,
+  value text not null,
+  updated_at timestamptz default now()
+);
+
+-- Seed the default mode as 'test' (change to 'live' via admin panel)
+insert into public.admin_settings (key, value, updated_at)
+values ('paystack_mode', 'test', now())
+on conflict (key) do nothing;
+
+-- Enable Row Level Security
+alter table public.admin_settings enable row level security;
+
+-- Allow public read (API routes use anon key)
+create policy "Allow public read of admin_settings"
+  on public.admin_settings
+  for select
+  using (true);
+
+-- Allow upsert from API routes (anon key)
+create policy "Allow upsert of admin_settings"
+  on public.admin_settings
+  for insert
+  with check (true);
+
+create policy "Allow update of admin_settings"
+  on public.admin_settings
+  for update
+  using (true);

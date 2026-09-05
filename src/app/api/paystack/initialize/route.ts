@@ -1,5 +1,31 @@
 import { NextRequest, NextResponse } from "next/server";
 import { initializePaystackTransaction } from "@/lib/paystack";
+import { createAdminSupabaseClient } from "@/lib/supabase/admin-client";
+
+/**
+ * Resolves the active Paystack mode from Supabase (source of truth),
+ * falling back to cookie -> env var -> "test" in that order.
+ */
+async function resolveActiveMode(req: NextRequest): Promise<string> {
+  try {
+    const supabase = createAdminSupabaseClient();
+    const { data, error } = await supabase
+      .from("admin_settings")
+      .select("value")
+      .eq("key", "paystack_mode")
+      .single();
+
+    if (!error && data?.value) {
+      return data.value;
+    }
+  } catch {
+    // Supabase unavailable — fall through to env var
+  }
+
+  // Fallback chain: cookie -> env var -> "test"
+  const cookieMode = req.cookies.get("pm_paystack_mode")?.value;
+  return cookieMode || process.env.PAYSTACK_MODE || "test";
+}
 
 export async function POST(req: NextRequest) {
   try {
@@ -16,8 +42,8 @@ export async function POST(req: NextRequest) {
     const host = req.headers.get("host") || "localhost:3000";
     const protocol = req.headers.get("x-forwarded-proto") || "http";
     const defaultCallback = `${protocol}://${host}/results`;
-    const cookieMode = req.cookies.get("pm_paystack_mode")?.value;
-    const activeMode = cookieMode || process.env.PAYSTACK_MODE;
+
+    const activeMode = await resolveActiveMode(req);
 
     const paystackRes = await initializePaystackTransaction({
       email,
@@ -43,9 +69,6 @@ export async function POST(req: NextRequest) {
   } catch (error: unknown) {
     console.error("Paystack Init Error:", error);
     const message = error instanceof Error ? error.message : "Internal server error initializing payment";
-    return NextResponse.json(
-      { status: false, message },
-      { status: 500 }
-    );
+    return NextResponse.json({ status: false, message }, { status: 500 });
   }
 }

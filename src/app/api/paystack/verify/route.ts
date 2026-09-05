@@ -1,8 +1,28 @@
 import { NextRequest, NextResponse } from "next/server";
 import { verifyPaystackTransaction } from "@/lib/paystack";
 import { createClient } from "@/lib/supabase/server";
+import { createAdminSupabaseClient } from "@/lib/supabase/admin-client";
 
 export const dynamic = "force-dynamic";
+
+async function resolveActiveMode(req: NextRequest): Promise<string> {
+  try {
+    const supabase = createAdminSupabaseClient();
+    const { data, error } = await supabase
+      .from("admin_settings")
+      .select("value")
+      .eq("key", "paystack_mode")
+      .single();
+
+    if (!error && data?.value) {
+      return data.value;
+    }
+  } catch {
+    // Supabase unavailable — fall through
+  }
+  const cookieMode = req.cookies.get("pm_paystack_mode")?.value;
+  return cookieMode || process.env.PAYSTACK_MODE || "test";
+}
 
 export async function GET(req: NextRequest) {
   try {
@@ -16,8 +36,7 @@ export async function GET(req: NextRequest) {
       );
     }
 
-    const cookieMode = req.cookies.get("pm_paystack_mode")?.value;
-    const activeMode = cookieMode || process.env.PAYSTACK_MODE;
+    const activeMode = await resolveActiveMode(req);
 
     const paystackRes = await verifyPaystackTransaction(reference, activeMode);
 
