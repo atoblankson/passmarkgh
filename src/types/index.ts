@@ -48,12 +48,17 @@ export interface University {
 export interface ProgrammeRequirement {
   id: string;
   programmeId: string;
-  cutoffAggregate: number;
+  cutoffAggregate?: number | null;
+  cutoffType?: string;
+  feePayingCutoff?: number | null;
+  genderAffirmativeActionCutoff?: number | null;
   requiredSubjects: string[]; // Subject names required with minimum grades
   minimumGrades?: Record<string, GradeValue>; // e.g. { "Core Mathematics": "C6" }
-  electiveGroup?: string;
-  year: number;
+  electiveGroup?: string | null;
+  year?: number;
   notes?: string;
+  sourceUrl?: string;
+  admissionEligibilityBenchmark?: number;
 }
 
 export interface Programme {
@@ -66,6 +71,7 @@ export interface Programme {
   campus?: string;
   requirements?: ProgrammeRequirement;
   university?: University;
+  careerProspects?: string[];
 }
 
 export interface AggregateCalculationResult {
@@ -77,16 +83,27 @@ export interface AggregateCalculationResult {
   errors: string[];
 }
 
+export type MatchStatusTier =
+  | "qualified"
+  | "competitive"
+  | "fee_paying"
+  | "prerequisite_missing"
+  | "unqualified";
+
 export interface ProgrammeMatchResult {
   programme: Programme;
   university: University;
-  cutoffAggregate: number;
+  cutoffAggregate: number | null;
+  effectiveCutoff?: number | null;
   studentAggregate: number;
   meetsAggregate: boolean;
   meetsSubjectRequirements: boolean;
   qualified: boolean;
   matchScore: number; // 0-100 score indicating competitive buffer
+  statusTier: MatchStatusTier;
   missingRequirements?: string[];
+  notes?: string;
+  isAffirmativeActionApplied?: boolean;
 }
 
 export interface WaitlistEntry {

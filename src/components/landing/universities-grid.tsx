@@ -5,6 +5,7 @@ import { MapPin, CheckCircle, Plus, ArrowRight } from "lucide-react";
 import { GHANA_UNIVERSITIES } from "@/data/universities";
 import { Badge } from "@/components/ui/badge";
 import { ScrollReveal } from "@/components/ui/scroll-reveal";
+import { scrollToHeroInput } from "@/components/landing/hero-action-bar";
 
 function UniAvatar({ name, shortName, logoUrl }: { name: string; shortName: string; logoUrl?: string }) {
   const [imgError, setImgError] = useState(false);
@@ -110,13 +111,14 @@ export function UniversitiesGrid() {
                 </div>
               </div>
 
-              <a
-                href="#waitlist"
-                className="shrink-0 inline-flex items-center gap-1.5 rounded-xl bg-brand-blue hover:bg-brand-darkBlue text-white px-4 py-2 text-xs font-bold shadow-sm transition-all active:scale-[0.98]"
+              <button
+                type="button"
+                onClick={scrollToHeroInput}
+                className="shrink-0 inline-flex items-center gap-1.5 rounded-xl bg-brand-blue hover:bg-brand-darkBlue text-white px-4 py-2 text-xs font-bold shadow-sm transition-all active:scale-[0.98] cursor-pointer"
               >
-                <span>Join Waitlist</span>
+                <span>Check Matches</span>
                 <ArrowRight className="h-3.5 w-3.5" />
-              </a>
+              </button>
             </div>
           </div>
         </div>

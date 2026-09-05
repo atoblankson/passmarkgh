@@ -1,0 +1,43 @@
+import React from "react";
+import type { Metadata } from "next";
+import Link from "next/link";
+import { ChevronRight } from "lucide-react";
+import { Navbar } from "@/components/layout/navbar";
+import { Footer } from "@/components/layout/footer";
+import { ResultsPageClient } from "@/components/results/results-page-client";
+
+export const metadata: Metadata = {
+  title: "Your University Admission Matches & Cutoffs — PassMarkGH",
+  description:
+    "View all undergraduate degree programmes you qualify for across Ghanaian universities (UG, KNUST, UCC, UPSA, UHAS) based on your verified WASSCE aggregate.",
+};
+
+export default function ResultsPage() {
+  return (
+    <div className="min-h-screen bg-slate-50/60 flex flex-col justify-between">
+      <div>
+        <Navbar />
+
+        <main className="mx-auto max-w-xl px-4 sm:px-6 py-6 sm:py-10">
+          {/* Breadcrumb Navigation */}
+          <nav className="flex items-center gap-1.5 text-xs text-slate-400 mb-6" aria-label="Breadcrumb">
+            <Link href="/" className="hover:text-brand-blue transition-colors">
+              Home
+            </Link>
+            <ChevronRight className="h-3.5 w-3.5 text-slate-300" />
+            <Link href="/check" className="hover:text-brand-blue transition-colors">
+              Admission Checker
+            </Link>
+            <ChevronRight className="h-3.5 w-3.5 text-slate-300" />
+            <span className="font-semibold text-slate-600">Results</span>
+          </nav>
+
+          {/* Results Client Content */}
+          <ResultsPageClient />
+        </main>
+      </div>
+
+      <Footer />
+    </div>
+  );
+}

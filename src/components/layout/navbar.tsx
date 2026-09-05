@@ -22,32 +22,27 @@ export function Navbar() {
             className="h-9 w-9 object-contain transition-transform group-hover:scale-105"
             priority
           />
-          <div className="flex flex-col">
-            <span className="text-lg font-extrabold tracking-tight text-slate-900 leading-tight">
-              PassMark<span className="text-brand-blue">GH</span>
-            </span>
-            <span className="text-[10px] font-semibold text-slate-400 uppercase tracking-wider">
-              Admission Matcher
-            </span>
-          </div>
+          <span className="text-lg font-extrabold tracking-tight text-slate-900">
+            PassMark<span className="text-brand-blue">GH</span>
+          </span>
         </Link>
 
         {/* Desktop Nav */}
         <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-600">
           <Link
-            href="#how-it-works"
+            href="/#how-it-works"
             className="transition-colors hover:text-brand-blue"
           >
             How It Works
           </Link>
           <Link
-            href="#universities"
+            href="/#universities"
             className="transition-colors hover:text-brand-blue"
           >
             Universities
           </Link>
           <Link
-            href="#faq"
+            href="/#faq"
             className="transition-colors hover:text-brand-blue"
           >
             FAQ
@@ -56,9 +51,9 @@ export function Navbar() {
 
         {/* Desktop Action */}
         <div className="hidden md:flex items-center gap-3">
-          <Button asChild size="default" className="rounded-xl font-semibold shadow-sm">
-            <Link href="#waitlist" className="flex items-center gap-2">
-              <span>Join Waitlist</span>
+          <Button asChild size="default" className="rounded-xl font-semibold shadow-sm bg-brand-blue hover:bg-brand-darkBlue text-white">
+            <Link href="/check" className="flex items-center gap-2">
+              <span>Check Eligibility</span>
               <ArrowRight className="h-4 w-4" />
             </Link>
           </Button>
@@ -79,34 +74,34 @@ export function Navbar() {
         <div className="border-b border-slate-200 bg-white px-4 py-6 md:hidden animate-in slide-in-from-top-2">
           <nav className="flex flex-col space-y-4 text-base font-medium text-slate-700">
             <Link
-              href="#how-it-works"
+              href="/#how-it-works"
               onClick={() => setMobileMenuOpen(false)}
               className="py-1 hover:text-brand-blue"
             >
               How It Works
             </Link>
             <Link
-              href="#universities"
+              href="/#universities"
               onClick={() => setMobileMenuOpen(false)}
               className="py-1 hover:text-brand-blue"
             >
               Universities
             </Link>
             <Link
-              href="#faq"
+              href="/#faq"
               onClick={() => setMobileMenuOpen(false)}
               className="py-1 hover:text-brand-blue"
             >
               FAQ
             </Link>
             <div className="pt-2">
-              <Button asChild className="w-full">
+              <Button asChild className="w-full bg-brand-blue hover:bg-brand-darkBlue text-white font-semibold">
                 <Link
-                  href="#waitlist"
+                  href="/check"
                   onClick={() => setMobileMenuOpen(false)}
                   className="flex items-center justify-center gap-2"
                 >
-                  <span>Join Waitlist</span>
+                  <span>Check Eligibility</span>
                   <ArrowRight className="h-4 w-4" />
                 </Link>
               </Button>

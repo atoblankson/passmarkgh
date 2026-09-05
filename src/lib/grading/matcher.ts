@@ -106,7 +106,7 @@ export function matchProgrammesAgainstGrades(
         meetsFeePaying = true;
         notes = `Eligible under Fee-Paying / Parallel Stream (Cutoff ${feePayingCutoff})`;
       } else if (isAffirmativeActionApplied && meetsRegular && baseCutoff !== null && studentAggregate > baseCutoff) {
-        notes = `Female Affirmative Action Cutoff Applied (Cutoff ${femaleCutoff} vs Regular ${baseCutoff})`;
+        notes = `Special female cutoff applied: Aggregate ${femaleCutoff} (Regular cutoff is ${baseCutoff})`;
       }
     } else {
       // General eligibility threshold (e.g. 24 or 36) or holistic admission

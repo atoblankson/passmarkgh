@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { TrendingDown, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { ScrollReveal } from "@/components/ui/scroll-reveal";
+import { scrollToHeroInput } from "@/components/landing/hero-action-bar";
 
 interface ComparisonItem {
   title: string;
@@ -167,7 +168,7 @@ export default function ComparisonSection({
                         variant="outline"
                         className="bg-blue-100 text-blue-700 border-blue-200 font-semibold text-xs px-2.5 py-0.5"
                       >
-                        Just GH₵20
+                        Just GH₵15
                       </Badge>
                     </div>
                   </div>
@@ -193,8 +194,9 @@ export default function ComparisonSection({
                 {/* Bottom Vibrant Blue CTA Banner */}
                 <div className="mt-8 pt-4">
                   <a
-                    href="#waitlist"
-                    className="group flex items-center justify-between rounded-2xl bg-brand-blue p-5 text-white shadow-md hover:bg-brand-darkBlue transition-all"
+                    href="#hero-input"
+                    onClick={scrollToHeroInput}
+                    className="group flex items-center justify-between rounded-2xl bg-brand-blue p-5 text-white shadow-md hover:bg-brand-darkBlue transition-all cursor-pointer"
                   >
                     <div>
                       <div className="text-[10px] font-bold uppercase tracking-widest text-blue-200 mb-0.5">

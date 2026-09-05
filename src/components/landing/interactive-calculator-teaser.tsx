@@ -5,7 +5,9 @@ import { ArrowRight, Info } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { GradeDropdown } from "@/components/check/grade-dropdown";
 import { getNumericGrade } from "@/lib/grading/grades";
+import { scrollToHeroInput } from "@/components/landing/hero-action-bar";
 import { WassceGrade } from "@/types";
 
 const GRADE_OPTIONS: WassceGrade[] = ["A1", "B2", "B3", "C4", "C5", "C6", "D7", "E8", "F9"];
@@ -58,6 +60,13 @@ interface SubjectItem {
 
 const SUBJECT_ITEMS: SubjectItem[] = [
   {
+    id: "soc",
+    name: "Social Studies",
+    category: "core",
+    subtitle: "Core (Social option)",
+    defaultGrade: "A1",
+  },
+  {
     id: "eng",
     name: "English Language",
     category: "core",
@@ -69,7 +78,7 @@ const SUBJECT_ITEMS: SubjectItem[] = [
     name: "Core Mathematics",
     category: "core",
     subtitle: "Core (Mandatory)",
-    defaultGrade: "B2",
+    defaultGrade: "A1",
   },
   {
     id: "sci",
@@ -79,63 +88,57 @@ const SUBJECT_ITEMS: SubjectItem[] = [
     defaultGrade: "A1",
   },
   {
-    id: "soc",
-    name: "Social Studies",
-    category: "core",
-    subtitle: "Core (Social option)",
-    defaultGrade: "B3",
-  },
-  {
     id: "el1",
     name: "Elective 1",
     category: "elective",
     subtitle: "e.g. Elective Maths",
-    defaultGrade: "B2",
+    defaultGrade: "A1",
   },
   {
     id: "el2",
     name: "Elective 2",
     category: "elective",
     subtitle: "e.g. Physics / Econ",
-    defaultGrade: "B3",
+    defaultGrade: "A1",
   },
   {
     id: "el3",
     name: "Elective 3",
     category: "elective",
     subtitle: "e.g. Chem / Govt",
-    defaultGrade: "C4",
+    defaultGrade: "A1",
   },
 ];
 
 export function InteractiveCalculatorTeaser() {
-  const [grades, setGrades] = useState<{ [subjectId: string]: WassceGrade }>({
-    eng: "A1",
-    math: "B2",
-    sci: "A1",
-    soc: "B3",
-    el1: "B2",
-    el2: "B3",
-    el3: "C4",
+  const [grades, setGrades] = useState<{ [subjectId: string]: WassceGrade | "" }>({
+    soc: "",
+    eng: "",
+    math: "",
+    sci: "",
+    el1: "",
+    el2: "",
+    el3: "",
   });
 
   const handleGradeChange = (subjectId: string, grade: WassceGrade) => {
     setGrades((prev) => ({ ...prev, [subjectId]: grade }));
   };
 
-  // Calculation logic
-  const engVal = getNumericGrade(grades.eng);
-  const mathVal = getNumericGrade(grades.math);
-  const sciVal = getNumericGrade(grades.sci);
-  const socVal = getNumericGrade(grades.soc);
+  // Calculation logic - only calculate when grades are selected
+  const hasAnyGrade = Object.values(grades).some((g) => Boolean(g));
+  const engVal = grades.eng ? getNumericGrade(grades.eng) : 0;
+  const mathVal = grades.math ? getNumericGrade(grades.math) : 0;
+  const sciVal = grades.sci ? getNumericGrade(grades.sci) : 0;
+  const socVal = grades.soc ? getNumericGrade(grades.soc) : 0;
   
-  // Better of science or social studies (lower number is better grade in WAEC)
-  const thirdCore = Math.min(sciVal, socVal);
+  // Better of science or social studies if both entered, or whichever is entered
+  const thirdCore = (sciVal && socVal) ? Math.min(sciVal, socVal) : (sciVal || socVal || 0);
   
   // Electives
-  const el1 = getNumericGrade(grades.el1);
-  const el2 = getNumericGrade(grades.el2);
-  const el3 = getNumericGrade(grades.el3);
+  const el1 = grades.el1 ? getNumericGrade(grades.el1) : 0;
+  const el2 = grades.el2 ? getNumericGrade(grades.el2) : 0;
+  const el3 = grades.el3 ? getNumericGrade(grades.el3) : 0;
 
   const coreTotal = engVal + mathVal + thirdCore;
   const electiveTotal = el1 + el2 + el3;
@@ -156,7 +159,7 @@ export function InteractiveCalculatorTeaser() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           {/* Controls */}
           <div className="lg:col-span-7 space-y-4">
-            <Card className="border-slate-200 shadow-sm bg-white rounded-3xl overflow-hidden">
+            <Card className="border-slate-200/90 shadow-sm bg-white rounded-3xl">
               <CardHeader className="pb-3 border-b border-slate-100">
                 <div className="flex items-center justify-between">
                   <div>
@@ -164,7 +167,7 @@ export function InteractiveCalculatorTeaser() {
                       Select Sample Grades
                     </CardTitle>
                     <CardDescription className="text-xs text-slate-500 mt-0.5">
-                      Tap any grade to update the score calculation in real time.
+                      Select sample grades to update the score calculation in real time.
                     </CardDescription>
                   </div>
                   <Badge variant="outline" className="hidden sm:inline-flex bg-slate-100 text-slate-700 text-[10px] font-semibold">
@@ -173,52 +176,32 @@ export function InteractiveCalculatorTeaser() {
                 </div>
               </CardHeader>
               
-              <CardContent className="p-3.5 sm:p-5 space-y-2.5">
+              <CardContent className="p-4 sm:p-6 divide-y divide-slate-100">
                 {SUBJECT_ITEMS.map((subject) => {
                   const currentGrade = grades[subject.id];
 
                   return (
                     <div
                       key={subject.id}
-                      className="flex flex-col sm:flex-row sm:items-center justify-between p-2.5 sm:px-3 sm:py-2 rounded-2xl border border-slate-200/90 bg-slate-50 hover:border-slate-300 transition-all gap-2 sm:gap-3"
+                      className="py-3 sm:py-3.5 flex items-center justify-between gap-4 first:pt-0 last:pb-0"
                     >
                       {/* Left: Subject Name & Info */}
-                      <div className="flex items-center justify-between sm:justify-start gap-2 min-w-0 sm:w-44 shrink-0">
-                        <div className="truncate">
-                          <span className="text-xs font-bold text-slate-900 block truncate">
-                            {subject.name}
-                          </span>
-                          <span className="text-[10px] font-medium text-slate-500 block truncate">
-                            {subject.subtitle}
-                          </span>
-                        </div>
-
-                        {/* Current selected pill indicator for mobile */}
-                        <span className="sm:hidden text-xs font-bold text-brand-blue bg-blue-50 border border-blue-200 px-2 py-0.5 rounded-lg">
-                          Grade: {currentGrade}
+                      <div className="min-w-0">
+                        <span className="text-sm font-normal text-slate-800 block truncate">
+                          {subject.name}
+                        </span>
+                        <span className="text-xs text-slate-400 font-normal block truncate">
+                          {subject.subtitle}
                         </span>
                       </div>
 
-                      {/* Right: Exactly 9-column Grade Matrix */}
-                      <div className="grid grid-cols-9 gap-1 sm:gap-1.5 w-full sm:w-auto shrink-0">
-                        {GRADE_OPTIONS.map((g) => {
-                          const isSelected = currentGrade === g;
-                          return (
-                            <button
-                              key={g}
-                              type="button"
-                              onClick={() => handleGradeChange(subject.id, g)}
-                              className={`h-7.5 sm:h-8 w-full sm:w-7 flex items-center justify-center text-xs font-bold rounded-lg transition-all duration-150 cursor-pointer select-none ${
-                                isSelected
-                                  ? "bg-brand-blue text-white shadow-sm ring-2 ring-blue-400/50 scale-[1.05] z-10"
-                                  : "bg-white text-slate-600 hover:bg-slate-200/80 hover:text-slate-900 border border-slate-200/80 active:scale-95"
-                              }`}
-                            >
-                              {g}
-                            </button>
-                          );
-                        })}
-                      </div>
+                      {/* Right: Grade Dropdown */}
+                      <GradeDropdown
+                        value={currentGrade}
+                        onChange={(g) => handleGradeChange(subject.id, g)}
+                        options={GRADE_OPTIONS}
+                        placeholder="Grade"
+                      />
                     </div>
                   );
                 })}
@@ -240,39 +223,44 @@ export function InteractiveCalculatorTeaser() {
 
               <div className="my-6 text-center">
                 <div className="text-5xl font-extrabold tracking-tight sm:text-6xl text-white inline-block">
-                  <SmoothAggregate value={previewAggregate} />
+                  {hasAnyGrade ? <SmoothAggregate value={previewAggregate} /> : <span>--</span>}
                 </div>
                 <div className="mt-2 text-xs font-medium text-blue-100">
-                  Best 6 Aggregate Score
+                  {hasAnyGrade ? "Best 6 Aggregate Score" : "Select grades on the left"}
                 </div>
               </div>
 
               <div className="space-y-2 rounded-2xl bg-white/10 p-3.5 backdrop-blur-sm text-xs text-blue-50 border border-white/10">
                 <div className="flex justify-between">
                   <span className="text-blue-200">Core Points (3 Best):</span>
-                  <span className="font-bold tabular-nums">{coreTotal}</span>
+                  <span className="font-bold tabular-nums">{hasAnyGrade ? coreTotal : "--"}</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-blue-200">Elective Points (3 Best):</span>
-                  <span className="font-bold tabular-nums">{electiveTotal}</span>
+                  <span className="font-bold tabular-nums">{hasAnyGrade ? electiveTotal : "--"}</span>
                 </div>
                 <div className="flex justify-between border-t border-white/10 pt-1.5 font-bold text-white">
                   <span>Estimated Programme Matches:</span>
                   <span className="text-emerald-300 font-extrabold">
-                    {previewAggregate <= 12 ? "45+ Programmes" : previewAggregate <= 24 ? "25+ Programmes" : "10+ Programmes"}
+                    {!hasAnyGrade
+                      ? "Select grades above"
+                      : previewAggregate <= 12
+                      ? "45+ Programmes"
+                      : previewAggregate <= 24
+                      ? "25+ Programmes"
+                      : "10+ Programmes"}
                   </span>
                 </div>
               </div>
 
               <div className="mt-6">
                 <Button
-                  asChild
-                  className="w-full bg-white text-brand-darkBlue hover:bg-blue-50 font-bold rounded-xl shadow-md transition-all active:scale-[0.98]"
+                  onClick={scrollToHeroInput}
+                  type="button"
+                  className="w-full bg-white text-brand-darkBlue hover:bg-blue-50 font-bold rounded-xl shadow-md transition-all active:scale-[0.98] flex items-center justify-center gap-2 cursor-pointer"
                 >
-                  <a href="#waitlist" className="flex items-center justify-center gap-2">
-                    <span>Unlock All University Matches</span>
-                    <ArrowRight className="h-4 w-4" />
-                  </a>
+                  <span>Calculate Full Aggregate &amp; Match</span>
+                  <ArrowRight className="h-4 w-4" />
                 </Button>
               </div>
             </div>
@@ -280,7 +268,7 @@ export function InteractiveCalculatorTeaser() {
             <div className="flex items-start gap-2 rounded-xl bg-blue-50 p-3 text-xs text-blue-800 border border-blue-100">
               <Info className="h-4 w-4 shrink-0 mt-0.5 text-brand-blue" />
               <span>
-                When the app comes out, simply enter your subjects or snap a photo of your result slip to instantly see every university course you qualify for.
+                Got your result slip? Enter your subjects above to calculate your official aggregate and instantly see every university course you qualify for.
               </span>
             </div>
           </div>

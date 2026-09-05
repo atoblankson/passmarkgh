@@ -1,16 +1,15 @@
 import React from "react";
-import { CheckCircle } from "lucide-react";
 import { FloatingNavbar } from "@/components/landing/floating-navbar";
 import KineticGrid from "@/components/ui/kinetic-grid";
+import { HeroActionBar } from "@/components/landing/hero-action-bar";
 import { HowItWorksSection } from "@/components/landing/how-it-works-section";
 import { ComparisonSection } from "@/components/landing/comparison-section";
 import { InteractiveCalculatorTeaser } from "@/components/landing/interactive-calculator-teaser";
 import { UniversitiesGrid } from "@/components/landing/universities-grid";
 import { PricingSection } from "@/components/landing/pricing-section";
-import { WaitlistForm } from "@/components/landing/waitlist-form";
+import { TestimonialsSection } from "@/components/landing/testimonials-section";
 import { FAQSection } from "@/components/landing/faq-section";
 import { Footer } from "@/components/layout/footer";
-import { Button } from "@/components/ui/button";
 import { AnimatedCounter } from "@/components/ui/animated-counter";
 import { ScrollReveal } from "@/components/ui/scroll-reveal";
 
@@ -21,60 +20,31 @@ export default function HomePage() {
       <FloatingNavbar />
 
       {/* Hero Section Wrapped in Interactive KineticGrid */}
-      <KineticGrid globalColor="default" className="pt-32 pb-20 md:pt-40 md:pb-28 px-4 sm:px-6">
-        {/* Soft Radial Ambient Glow Gradients */}
-        <div className="absolute top-1/4 -left-48 -z-10 w-[600px] h-[600px] bg-emerald-400/15 blur-[140px] rounded-full pointer-events-none animate-pulseGlow" />
-        <div className="absolute top-1/4 -right-48 -z-10 w-[600px] h-[600px] bg-blue-500/15 blur-[140px] rounded-full pointer-events-none animate-pulseGlow" />
+      <div id="hero-section">
+        <KineticGrid globalColor="default" className="pt-32 sm:pt-36 md:pt-44 pb-14 sm:pb-20 md:pb-28 px-4 sm:px-6">
+          {/* Soft Radial Ambient Glow Gradients */}
+          <div className="absolute top-1/4 -left-48 -z-10 w-[600px] h-[600px] bg-emerald-400/15 blur-[140px] rounded-full pointer-events-none animate-pulseGlow" />
+          <div className="absolute top-1/4 -right-48 -z-10 w-[600px] h-[600px] bg-blue-500/15 blur-[140px] rounded-full pointer-events-none animate-pulseGlow" />
 
-        <div className="mx-auto max-w-4xl text-center">
-          {/* Main Huge Headline */}
-          <h1 className="mt-2 text-4xl font-extrabold tracking-tight text-slate-950 sm:text-5xl md:text-6xl lg:text-[68px] leading-[1.1] text-balance">
-            Know every university<br />
-            you qualify for{" "}
-            <span className="bg-gradient-to-r from-blue-600 via-blue-700 to-indigo-700 bg-clip-text text-transparent">
-              before<br className="hidden sm:inline" /> buying a single form
-            </span>
-          </h1>
-
-          {/* Subtitle */}
-          <p className="mt-6 max-w-xl mx-auto text-base sm:text-lg font-medium text-slate-900 leading-relaxed text-balance">
-            Stop wasting ₵150+ on rejected forms. Enter your WASSCE grades to calculate your aggregate and match with every programme you qualify for across Ghana.
-          </p>
-
-          {/* Inline Action Bar */}
-          <div className="mt-8 mx-auto max-w-lg">
-            <form
-              action="#waitlist"
-              className="flex flex-col sm:flex-row items-center rounded-2xl sm:rounded-xl border border-slate-300/80 bg-white p-1.5 shadow-md focus-within:ring-2 focus-within:ring-brand-blue/30 focus-within:border-brand-blue transition-all gap-2 sm:gap-0"
-            >
-              <div className="flex-1 px-4 py-2 w-full text-left">
-                <input
-                  type="text"
-                  placeholder="Enter email or WhatsApp phone here"
-                  className="w-full text-sm text-slate-900 placeholder:text-slate-400 bg-transparent focus:outline-none"
-                />
-              </div>
-              <Button
-                type="submit"
-                size="default"
-                className="w-full sm:w-auto rounded-xl bg-brand-blue hover:bg-brand-darkBlue text-white font-bold px-6 shadow-sm flex items-center justify-center transition-transform active:scale-[0.98]"
-              >
-                <span>Check My Eligibility</span>
-              </Button>
-            </form>
-
-            <div className="mt-3 flex items-center justify-center gap-4 text-[11px] font-bold text-slate-950">
-              <span className="flex items-center gap-1">
-                <CheckCircle className="h-3.5 w-3.5 text-emerald-600" /> Free Results Alert
+          <div className="mx-auto max-w-4xl text-center">
+            {/* Main High-Impact Responsive Headline */}
+            <h1 className="text-[32px] sm:text-5xl md:text-6xl lg:text-[68px] font-extrabold tracking-tight text-slate-950 leading-[1.12] sm:leading-[1.1] text-balance">
+              Know every university you qualify for{" "}
+              <span className="bg-gradient-to-r from-blue-600 via-blue-700 to-indigo-700 bg-clip-text text-transparent">
+                before buying a single form
               </span>
-              <span className="text-slate-400">•</span>
-              <span className="flex items-center gap-1">
-                <CheckCircle className="h-3.5 w-3.5 text-emerald-600" /> Covers UG, KNUST, UCC &amp; more
-              </span>
-            </div>
+            </h1>
+
+            {/* Subtitle */}
+            <p className="mt-4 sm:mt-6 max-w-xl mx-auto text-sm sm:text-lg font-normal text-slate-600 leading-relaxed text-balance">
+              Stop wasting ₵150+ on rejected forms. Enter your WASSCE grades to calculate your aggregate and match with every programme you qualify for across Ghana.
+            </p>
+
+            {/* Inline Action Bar */}
+            <HeroActionBar />
           </div>
-        </div>
-      </KineticGrid>
+        </KineticGrid>
+      </div>
 
       {/* Social Proof Stats Bar */}
       <section className="border-y border-slate-200/80 bg-slate-50/50 py-8 px-4 sm:px-6">
@@ -134,9 +104,9 @@ export default function HomePage() {
       {/* Pricing Section */}
       <PricingSection />
 
-      {/* Full Waitlist & Instant Alerts Form */}
+      {/* Customer Testimonials & Social Proof Section */}
       <ScrollReveal variant="fade-up" threshold={0.1}>
-        <WaitlistForm />
+        <TestimonialsSection />
       </ScrollReveal>
 
       {/* FAQ Accordion Section */}

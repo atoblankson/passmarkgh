@@ -86,6 +86,18 @@ export const GHANA_UNIVERSITIES: University[] = [
     founded: 2002,
   },
   {
+    id: "academic-city-accra",
+    name: "Academic City University College",
+    shortName: "Academic City",
+    location: "Haatso, Accra",
+    region: "Greater Accra",
+    type: "private",
+    website: "https://acity.edu.gh",
+    logoUrl: "/logos/academiccity.png",
+    iconUrl: "/logos/academiccity.png",
+    founded: 2009,
+  },
+  {
     id: "uds-tamale",
     name: "University for Development Studies",
     shortName: "UDS",

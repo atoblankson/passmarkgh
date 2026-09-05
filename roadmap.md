@@ -146,132 +146,23 @@ A live, beautiful landing page at `passmarkgh.site` that collects waitlist signu
 
 ### 2A — Database Schema
 
-- [ ] **P2.1** — Design and create core tables:
-
-  **`universities`**
-  | Column | Type | Description |
-  | ------ | ---- | ----------- |
-  | id | uuid (PK) | |
-  | name | text | e.g. "University of Ghana" |
-  | short_name | text | e.g. "UG" |
-  | location | text | e.g. "Accra" |
-  | logo_url | text | |
-  | website | text | |
-
-  **`programmes`**
-  | Column | Type | Description |
-  | ------ | ---- | ----------- |
-  | id | uuid (PK) | |
-  | university_id | uuid (FK) | |
-  | name | text | e.g. "BSc Computer Science" |
-  | faculty | text | e.g. "Faculty of Computing" |
-  | duration_years | int | e.g. 4 |
-  | campus | text | nullable |
-
-  **`programme_requirements`**
-  | Column | Type | Description |
-  | ------ | ---- | ----------- |
-  | id | uuid (PK) | |
-  | programme_id | uuid (FK) | |
-  | cutoff_aggregate | int | e.g. 24 |
-  | required_subjects | jsonb | e.g. `["Core Maths", "English", "Elective Maths"]` |
-  | required_grades | jsonb | Subject-specific min grade, e.g. `{"Core Maths": "C6"}` |
-  | elective_group | text | e.g. "Science", "General Arts" |
-  | year | int | Academic year the cutoff applies to |
-  | notes | text | Any special conditions |
-
-  **`subjects`** (reference table)
-  | Column | Type | Description |
-  | ------ | ---- | ----------- |
-  | id | uuid (PK) | |
-  | name | text | e.g. "Core Mathematics" |
-  | category | text | `core` or `elective` |
-  | exam_type | text | `WASSCE` or `BECE` |
-
-- [ ] **P2.2** — Create Supabase RLS (Row Level Security) policies
-  - `universities`, `programmes`, `subjects` → public read
-  - `programme_requirements` → public read
-  - Admin write access via service role key only
+- [x] **P2.1** — Design and create core tables (`universities`, `programmes`, `programme_requirements`, `subjects`)
+- [x] **P2.2** — Create Supabase RLS (Row Level Security) policies
 
 ### 2B — Aggregate Calculator
 
-- [ ] **P2.3** — Implement WAEC grading scale:
-
-  **WASSCE Grading:**
-  | Grade | Value | Interpretation |
-  | ----- | ----- | -------------- |
-  | A1 | 1 | Excellent |
-  | B2 | 2 | Very Good |
-  | B3 | 3 | Good |
-  | C4 | 4 | Credit |
-  | C5 | 5 | Credit |
-  | C6 | 6 | Credit |
-  | D7 | 7 | Pass |
-  | E8 | 8 | Pass |
-  | F9 | 9 | Fail |
-
-  **Aggregate calculation:**
-  - Take the **best 6 subjects** (3 core + 3 best electives)
-  - Core subjects: English Language, Core Mathematics, Integrated Science / Social Studies
-  - Sum the grade values → aggregate score
-  - Lower aggregate = better (best possible = 6, worst qualifying ≈ 24–36 depending on university)
-
-- [ ] **P2.4** — Create `src/lib/grading/calculator.ts`:
-  ```typescript
-  interface SubjectGrade {
-    subject: string;
-    grade: string; // A1, B2, ..., F9
-    category: 'core' | 'elective';
-  }
-
-  interface AggregateResult {
-    aggregate: number;
-    bestSix: SubjectGrade[];
-    isValid: boolean;
-    errors: string[];
-  }
-
-  function calculateAggregate(grades: SubjectGrade[]): AggregateResult
-  ```
-
-- [ ] **P2.5** — Create `src/lib/grading/matcher.ts`:
-  ```typescript
-  interface MatchResult {
-    programme: Programme;
-    university: University;
-    meetsAggregate: boolean;
-    meetsSubjects: boolean;
-    qualified: boolean;
-    matchScore: number; // 0-100 confidence
-  }
-
-  function matchProgrammes(
-    grades: SubjectGrade[],
-    aggregate: number
-  ): Promise<MatchResult[]>
-  ```
-
-- [ ] **P2.6** — Write unit tests for calculator + matcher
-- [ ] **P2.7** — Create seed script for initial data (start with top 5 universities)
+- [x] **P2.3** — Implement WAEC grading scale (A1=1, B2=2, ..., F9=9, best 6 core + electives)
+- [x] **P2.4** — Create `src/lib/grading/calculator.ts` with second-sitting combine & gender affirmative action
+- [x] **P2.5** — Create `src/lib/grading/matcher.ts` with prerequisite and cutoff matching
+- [x] **P2.6** — Unit test calculator + matcher algorithms
+- [x] **P2.7** — Seed data with 140+ official degree programmes across top Ghanaian universities
 
 ### 2C — Data Collection Plan
 
-- [ ] **P2.8** — Collect cutoff points and requirements for priority universities:
-  1. University of Ghana (UG)
-  2. KNUST
-  3. University of Cape Coast (UCC)
-  4. University for Development Studies (UDS)
-  5. University of Education, Winneba (UEW)
-  6. Ashesi University
-  7. Ghana Institute of Management and Public Administration (GIMPA)
-  8. University of Professional Studies, Accra (UPSA)
-  9. University of Mines and Technology (UMaT)
-  10. All other public + private universities
-
-> **⚠️ IMPORTANT: Data is the moat.** The accuracy and completeness of cutoff data is the #1 factor for product quality. This data must be sourced from official university admission brochures, verified, and updated annually.
+- [x] **P2.8** — Collect cutoff points and requirements for priority universities (UG, KNUST, UCC, UDS, UEW, Ashesi, UPSA, UMaT, GCTU)
 
 ### Deliverable
-A working grade calculator, programme matcher, and seeded database for at least 5 universities and 100+ programmes.
+A working grade calculator, programme matcher, and seeded database for Ghanaian universities with 140+ programmes.
 
 ---
 
@@ -284,105 +175,56 @@ A working grade calculator, programme matcher, and seeded database for at least 
 | Route | Purpose |
 | ----- | ------- |
 | `/check` | Grade entry form |
-| `/results` | Results page (blurred/locked by default) |
+| `/results` | Results page (free 2 preview cards, remaining locked/blurred behind GH₵15 paywall) |
 
 ### 3A — Grade Entry Page (`/check`)
 
-- [ ] **P3.1** — Exam type selector (WASSCE / BECE toggle)
-- [ ] **P3.2** — Subject picker
-  - Core subjects auto-filled (English, Core Maths, Int. Science, Social Studies)
-  - Elective subject dropdown (searchable, grouped by programme stream)
-  - Min 3 electives, max 4
-- [ ] **P3.3** — Grade selector per subject (A1–F9 dropdown or pill selector)
-- [ ] **P3.4** — Real-time aggregate display (updates as grades are entered)
-- [ ] **P3.5** — "Check My Results" CTA button
-- [ ] **P3.6** — Client-side validation with error messages
-- [ ] **P3.7** — Mobile-first responsive layout (single column on mobile)
+- [x] **P3.1** — Exam type selector (WASSCE / BECE toggle)
+- [x] **P3.2** — Subject picker (Core subjects auto-filled + searchable Electives grouped by stream)
+- [x] **P3.3** — Grade selector per subject (A1–F9 dropdown and pill selector)
+- [x] **P3.4** — Real-time aggregate display & sidebar breakdown
+- [x] **P3.5** — "Check My Results" CTA button
+- [x] **P3.6** — Client-side validation with error messages
+- [x] **P3.7** — Mobile-first responsive layout
 
 ### 3B — Results Page (`/results`)
 
-- [ ] **P3.8** — Results summary card:
-  - Your aggregate score
-  - Total qualifying programmes
-  - Total universities matched
-- [ ] **P3.9** — Programme cards (list view):
-  - University name + logo
-  - Programme name
-  - Cutoff aggregate vs your aggregate (visual bar)
-  - Required subjects (checkmarks for matched)
-  - "Qualified" / "Not Qualified" badge
-- [ ] **P3.10** — Filters sidebar/drawer:
-  - University (multi-select)
-  - Region / Location
-  - Programme category (Science, Arts, Business, etc.)
-  - Show only qualified (toggle)
-- [ ] **P3.11** — Sort options: Best match, University name, Programme name, Cutoff
-- [ ] **P3.12** — **Paywall gate:**
-  - Show first 3 results for free (teaser)
-  - Blur remaining results
-  - "Unlock All Results — ₵20" CTA
-- [ ] **P3.13** — Empty state: "No qualifying programmes found" with suggestions
-- [ ] **P3.14** — Share results (generate shareable link or image)
+- [x] **P3.8** — Results summary card: Aggregate score, Core/Elective breakdown, total qualified, total institutions
+- [x] **P3.9** — Programme cards (list view): University crest logo, programme name, cutoff vs student score, prerequisite chips, status badge
+- [x] **P3.10** — Filters bar for unlocked users: University selector, category filter, qualified status filter
+- [x] **P3.11** — Search & sorting: Full keyword search across universities and programmes
+- [x] **P3.12** — **Paywall gate:** 2 free preview cards shown, remaining locked/blurred with GH₵15 Paystack unlock CTA
+- [x] **P3.13** — Empty state: "No matching programmes found" with filter reset action
+- [x] **P3.14** — PDF export / print dossier for paid users
 
 ### Deliverable
-A working end-to-end flow: enter grades → see aggregate → see matching programmes (first 3 free, rest locked).
+A working end-to-end flow: enter grades → see aggregate → see matching programmes (2 free preview cards, rest locked).
 
 ---
 
 ## Phase 4 — Payments & Paywall
 
-> **Goal:** Integrate Paystack to collect ₵20 per result unlock.
+> **Goal:** Integrate Paystack to collect GH₵15 per result unlock.
 
 ### Tasks
 
-- [ ] **P4.1** — Set up Paystack account (GHS currency)
-- [ ] **P4.2** — Install Paystack inline JS SDK
-- [ ] **P4.3** — Create payment flow:
+- [x] **P4.1** — Set up Paystack account (GHS currency)
+- [x] **P4.2** — Install Paystack SDK / integration utilities
+- [x] **P4.3** — Create payment flow:
   1. User clicks "Unlock All Results"
   2. Collect email (or use stored email)
-  3. Initialize Paystack popup (`amount: 2000` — Paystack uses pesewas)
-  4. On success → unlock results
+  3. Initialize Paystack checkout (`amount: 1500` pesewas = GH₵15)
+  4. On success → unlock results & verify server-side
   5. On failure → show retry
-- [ ] **P4.4** — Create `payments` table:
-  ```sql
-  create table payments (
-    id uuid default gen_random_uuid() primary key,
-    email text not null,
-    phone text,
-    amount int not null, -- in pesewas
-    reference text unique not null,
-    status text default 'pending', -- pending, success, failed
-    paystack_response jsonb,
-    check_id uuid, -- links to the specific check/session
-    created_at timestamptz default now()
-  );
-  ```
-- [ ] **P4.5** — Create `checks` table (stores each grade check session):
-  ```sql
-  create table checks (
-    id uuid default gen_random_uuid() primary key,
-    email text,
-    grades jsonb not null,
-    aggregate int not null,
-    results_count int,
-    is_paid boolean default false,
-    payment_id uuid references payments(id),
-    created_at timestamptz default now()
-  );
-  ```
-- [ ] **P4.6** — Paystack webhook handler: `POST /api/webhooks/paystack`
-  - Verify webhook signature
-  - Update payment status
-  - Mark check as paid
-- [ ] **P4.7** — Result unlock logic:
-  - On successful payment, store `check_id` as paid
-  - Return full results for that check
-  - Allow re-access via email + reference
-- [ ] **P4.8** — Payment receipt / confirmation screen
-- [ ] **P4.9** — Test with Paystack test keys end-to-end
+- [x] **P4.4** — Create `payments` table schema & SQL migration
+- [x] **P4.5** — Create `checks` table schema & SQL migration
+- [x] **P4.6** — Paystack webhook handler: `POST /api/webhooks/paystack` (HMAC SHA512 signature verification)
+- [x] **P4.7** — Result unlock logic (localStorage fallback + database persistence)
+- [x] **P4.8** — Payment confirmation / success banner on results page
+- [x] **P4.9** — Test with Paystack initialization & verification endpoints
 
 ### Deliverable
-Working payment flow: user pays ₵20 via Paystack → full results unlocked.
+Working payment flow: user pays GH₵15 via Paystack → full results unlocked.
 
 ---
 
@@ -422,11 +264,11 @@ Students can create accounts, view history, and revisit paid results without re-
 
 ### SEO
 
-- [ ] **P6.7** — Dynamic meta tags per page
+- [x] **P6.7** — Dynamic meta tags per page (titles, descriptions, OpenGraph, Twitter cards)
 - [ ] **P6.8** — Blog/content pages: `/blog/how-to-calculate-wassce-aggregate`
-- [ ] **P6.9** — Sitemap.xml + robots.txt
-- [ ] **P6.10** — Structured data (JSON-LD) for FAQ and HowTo
-- [ ] **P6.11** — Open Graph images (auto-generated or static)
+- [x] **P6.9** — Sitemap.xml (`src/app/sitemap.ts`) + robots.txt (`src/app/robots.ts`)
+- [x] **P6.10** — Structured data (JSON-LD) for WebApplication, FAQPage, and HowTo
+- [x] **P6.11** — Open Graph images, favicons, apple touch icons & web manifest
 
 ### Analytics
 

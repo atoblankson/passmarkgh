@@ -2,6 +2,12 @@ import { Subject } from "@/types";
 
 export const WASSCE_CORE_SUBJECTS: Subject[] = [
   {
+    id: "core-social",
+    name: "Social Studies",
+    category: "core",
+    examType: "WASSCE",
+  },
+  {
     id: "core-english",
     name: "English Language",
     category: "core",
@@ -16,12 +22,6 @@ export const WASSCE_CORE_SUBJECTS: Subject[] = [
   {
     id: "core-science",
     name: "Integrated Science",
-    category: "core",
-    examType: "WASSCE",
-  },
-  {
-    id: "core-social",
-    name: "Social Studies",
     category: "core",
     examType: "WASSCE",
   },
@@ -82,3 +82,133 @@ export const WASSCE_ELECTIVE_SUBJECTS: Subject[] = [
 ];
 
 export const ALL_WASSCE_SUBJECTS = [...WASSCE_CORE_SUBJECTS, ...WASSCE_ELECTIVE_SUBJECTS];
+
+export interface StreamPreset {
+  id: string;
+  name: string;
+  icon: string;
+  description: string;
+  defaultElectives: string[];
+  suggestedElectives: string[];
+}
+
+export const SHS_STREAM_PRESETS: StreamPreset[] = [
+  {
+    id: "science",
+    name: "General Science",
+    icon: "🧪",
+    description: "Elective Maths, Physics, Chemistry, Biology",
+    defaultElectives: ["Elective Mathematics", "Physics", "Chemistry", "Biology"],
+    suggestedElectives: [
+      "Elective Mathematics",
+      "Physics",
+      "Chemistry",
+      "Biology",
+      "Information & Comm. Tech (Elective)",
+      "Geography",
+      "French",
+    ],
+  },
+  {
+    id: "business",
+    name: "Business",
+    icon: "💼",
+    description: "Financial Accounting, Cost Accounting, Business Management, Economics",
+    defaultElectives: ["Financial Accounting", "Cost Accounting", "Business Management", "Economics"],
+    suggestedElectives: [
+      "Financial Accounting",
+      "Cost Accounting",
+      "Business Management",
+      "Economics",
+      "Elective Mathematics",
+      "Business Mathematics",
+      "French",
+    ],
+  },
+  {
+    id: "arts",
+    name: "General Arts",
+    icon: "📚",
+    description: "Economics, Government, Geography, Literature in English",
+    defaultElectives: ["Economics", "Government", "Geography", "Literature in English"],
+    suggestedElectives: [
+      "Economics",
+      "Government",
+      "Geography",
+      "Literature in English",
+      "History",
+      "French",
+      "Christian Religious Studies (CRS)",
+      "Islamic Religious Studies (IRS)",
+      "Ghanaian Language (Twi/Fante/Ga/Ewe)",
+      "Elective Mathematics",
+    ],
+  },
+  {
+    id: "visual_arts",
+    name: "Visual Arts",
+    icon: "🎨",
+    description: "General Knowledge in Art, Graphic Design, Picture Making, Textiles",
+    defaultElectives: ["General Knowledge in Art (GKA)", "Graphic Design", "Picture Making", "Textiles"],
+    suggestedElectives: [
+      "General Knowledge in Art (GKA)",
+      "Graphic Design",
+      "Picture Making",
+      "Textiles",
+      "Ceramics",
+      "Sculpture",
+      "Economics",
+      "French",
+    ],
+  },
+  {
+    id: "home_economics",
+    name: "Home Economics",
+    icon: "🍳",
+    description: "Food & Nutrition, Management in Living, Clothing & Textiles, Biology",
+    defaultElectives: ["Food & Nutrition", "Management in Living", "Clothing & Textiles", "Biology"],
+    suggestedElectives: [
+      "Food & Nutrition",
+      "Management in Living",
+      "Clothing & Textiles",
+      "Biology",
+      "General Knowledge in Art (GKA)",
+      "Economics",
+      "French",
+      "Chemistry",
+    ],
+  },
+  {
+    id: "agriculture",
+    name: "Agricultural Science",
+    icon: "🌾",
+    description: "General Agriculture, Animal Husbandry, Chemistry, Physics",
+    defaultElectives: ["General Agriculture", "Animal Husbandry", "Chemistry", "Physics"],
+    suggestedElectives: [
+      "General Agriculture",
+      "Animal Husbandry",
+      "Crop Husbandry & Horticulture",
+      "Chemistry",
+      "Physics",
+      "Fisheries",
+      "Elective Mathematics",
+    ],
+  },
+  {
+    id: "technical",
+    name: "Technical",
+    icon: "⚙️",
+    description: "Technical Drawing, Applied Electricity, Physics, Elective Maths",
+    defaultElectives: ["Technical Drawing", "Applied Electricity", "Physics", "Elective Mathematics"],
+    suggestedElectives: [
+      "Technical Drawing",
+      "Applied Electricity",
+      "Physics",
+      "Elective Mathematics",
+      "Building Construction",
+      "Woodwork",
+      "Metalwork",
+      "Auto Mechanics",
+    ],
+  },
+];

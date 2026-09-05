@@ -50,3 +50,20 @@ export function isCreditOrBetter(grade: string): boolean {
   const num = getNumericGrade(grade);
   return num >= 1 && num <= 6;
 }
+
+export function generateGradeSignature(params: {
+  gender?: string;
+  selectedStreamId?: string;
+  allGrades?: Array<{ subjectName: string; grade: string }>;
+}): string {
+  const gender = (params.gender || "unspecified").trim().toLowerCase();
+  const stream = (params.selectedStreamId || "general").trim().toLowerCase();
+  const grades = (params.allGrades || [])
+    .filter((g) => Boolean(g.grade && g.subjectName))
+    .map((g) => `${g.subjectName.trim().toLowerCase()}:${g.grade.trim().toUpperCase()}`)
+    .sort()
+    .join(";");
+
+  return `pm_${gender}_${stream}_${grades}`;
+}
+

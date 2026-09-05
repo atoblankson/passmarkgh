@@ -1,0 +1,1474 @@
+{
+  "metadata": {
+    "title": "Ghana Tertiary Admissions — Final Round Checked Baseline",
+    "version": "3.0.0",
+    "lastUpdated": "2026-09-04",
+    "verificationPrinciple": "Official institutional sources first. Third-party figures are not treated as authoritative cutoffs.",
+    "criticalRule": "A general eligibility threshold is never represented as a programme-specific cutoff.",
+    "cutoffMeaning": "cutoffAggregate is populated only where an official programme-specific cutoff/guide or a national benchmark is explicitly identified.",
+    "nullMeaning": "No reliable programme-specific cutoff was verified in the official material reviewed for this round.",
+    "historicalMeaning": "Historical official guides are retained only when the institution itself identifies them as historical/previous-year guidance.",
+    "sourceCaveat": "Not every requested institution publishes a current programme-by-programme cutoff table. Where that table is absent, the dataset preserves null rather than inventing estimates.",
+    "institutionCount": 28,
+    "programmeRecordCount": 221,
+    "populatedCutoffRecordCount": 36
+  },
+  "institutions": [
+    {
+      "university": {
+        "name": "University of Ghana",
+        "shortName": "UG Legon",
+        "location": "Accra",
+        "region": "Greater Accra",
+        "type": "public"
+      },
+      "admissionsCycle": "2024/2025 - 2025/2026",
+      "officialPortal": "https://admissions.ug.edu.gh",
+      "sources": [
+        "https://admissions.ug.edu.gh/index.php/undergraduate/cut-off",
+        "https://admissions.ug.edu.gh/undergraduate/entry-requirements"
+      ],
+      "cutoffStatus": "OFFICIAL_PUBLISHED",
+      "programmes": [
+        {
+          "name": "Bachelor of Medicine and Bachelor of Surgery (MB ChB)",
+          "faculty": "UG Medical School, College of Health Sciences",
+          "category": "Health & Medical Sciences",
+          "durationYears": 6,
+          "cutoffAggregate": 8,
+          "feePayingCutoff": null,
+          "cutoffType": "OFFICIAL_PUBLISHED",
+          "requiredSubjects": [
+            "English Language",
+            "Core Mathematics",
+            "Integrated Science",
+            "Chemistry",
+            "Physics",
+            "Biology"
+          ],
+          "minimumGrades": {
+            "English Language": "C6",
+            "Core Mathematics": "C6",
+            "Integrated Science": "C6",
+            "Chemistry": "C6",
+            "Physics": "C6",
+            "Biology": "C6"
+          },
+          "electiveGroup": "Science",
+          "sourceUrl": "https://admissions.ug.edu.gh/undergraduate/cut-off"
+        },
+        {
+          "name": "Bachelor of Dental Surgery (BDS)",
+          "faculty": "UG School of Dentistry, College of Health Sciences",
+          "category": "Health & Medical Sciences",
+          "durationYears": 6,
+          "cutoffAggregate": 10,
+          "feePayingCutoff": null,
+          "cutoffType": "OFFICIAL_PUBLISHED",
+          "requiredSubjects": [
+            "English Language",
+            "Core Mathematics",
+            "Integrated Science",
+            "Chemistry",
+            "Physics",
+            "Biology"
+          ],
+          "minimumGrades": {
+            "English Language": "C6",
+            "Core Mathematics": "C6",
+            "Integrated Science": "C6",
+            "Chemistry": "C6",
+            "Physics": "C6",
+            "Biology": "C6"
+          },
+          "electiveGroup": "Science",
+          "sourceUrl": "https://admissions.ug.edu.gh/undergraduate/cut-off"
+        },
+        {
+          "name": "Doctor of Pharmacy (PharmD)",
+          "faculty": "School of Pharmacy, College of Health Sciences",
+          "category": "Health & Medical Sciences",
+          "durationYears": 6,
+          "cutoffAggregate": 10,
+          "feePayingCutoff": null,
+          "cutoffType": "OFFICIAL_PUBLISHED",
+          "requiredSubjects": [
+            "English Language",
+            "Core Mathematics",
+            "Integrated Science",
+            "Chemistry",
+            "Physics",
+            "Biology"
+          ],
+          "minimumGrades": {
+            "English Language": "C6",
+            "Core Mathematics": "C6",
+            "Integrated Science": "C6",
+            "Chemistry": "C6",
+            "Biology": "C6"
+          },
+          "electiveGroup": "Science",
+          "sourceUrl": "https://admissions.ug.edu.gh/undergraduate/cut-off"
+        },
+        {
+          "name": "BSc Nursing",
+          "faculty": "School of Nursing and Midwifery, College of Health Sciences",
+          "category": "Health & Medical Sciences",
+          "durationYears": 4,
+          "cutoffAggregate": 15,
+          "feePayingCutoff": null,
+          "cutoffType": "OFFICIAL_PUBLISHED",
+          "requiredSubjects": [
+            "English Language",
+            "Core Mathematics",
+            "Integrated Science"
+          ],
+          "minimumGrades": {
+            "English Language": "C6",
+            "Core Mathematics": "C6",
+            "Integrated Science": "C6"
+          },
+          "electiveGroup": "Science, General Arts, Home Economics, Agricultural Science",
+          "sourceUrl": "https://admissions.ug.edu.gh/undergraduate/cut-off"
+        },
+        {
+          "name": "BSc Midwifery",
+          "faculty": "School of Nursing and Midwifery, College of Health Sciences",
+          "category": "Health & Medical Sciences",
+          "durationYears": 4,
+          "cutoffAggregate": 15,
+          "feePayingCutoff": null,
+          "cutoffType": "OFFICIAL_PUBLISHED",
+          "requiredSubjects": [
+            "English Language",
+            "Core Mathematics",
+            "Integrated Science"
+          ],
+          "minimumGrades": {
+            "English Language": "C6",
+            "Core Mathematics": "C6",
+            "Integrated Science": "C6"
+          },
+          "electiveGroup": "Science, General Arts, Home Economics",
+          "sourceUrl": "https://admissions.ug.edu.gh/undergraduate/cut-off"
+        },
+        {
+          "name": "BSc Medical Laboratory Sciences",
+          "faculty": "School of Biomedical and Allied Health Sciences",
+          "category": "Allied Health Sciences",
+          "durationYears": 4,
+          "cutoffAggregate": 12,
+          "feePayingCutoff": null,
+          "cutoffType": "OFFICIAL_PUBLISHED",
+          "requiredSubjects": [
+            "English Language",
+            "Core Mathematics",
+            "Integrated Science",
+            "Chemistry",
+            "Physics",
+            "Biology"
+          ],
+          "minimumGrades": {
+            "English Language": "C6",
+            "Core Mathematics": "C6",
+            "Integrated Science": "C6"
+          },
+          "electiveGroup": "Science",
+          "sourceUrl": "https://admissions.ug.edu.gh/undergraduate/cut-off"
+        },
+        {
+          "name": "BSc Computer Science",
+          "faculty": "School of Physical and Mathematical Sciences",
+          "category": "Computing & Technology",
+          "durationYears": 4,
+          "cutoffAggregate": 7,
+          "genderAffirmativeActionCutoff": 9,
+          "feePayingCutoff": 15,
+          "cutoffType": "OFFICIAL_PUBLISHED",
+          "requiredSubjects": [
+            "Core Mathematics",
+            "English Language",
+            "Elective Mathematics"
+          ],
+          "minimumGrades": {
+            "Core Mathematics": "C6",
+            "English Language": "C6",
+            "Elective Mathematics": "B3"
+          },
+          "electiveGroup": "Science",
+          "sourceUrl": "https://admissions.ug.edu.gh/undergraduate/cut-off"
+        },
+        {
+          "name": "BSc Information Technology",
+          "faculty": "School of Physical and Mathematical Sciences",
+          "category": "Computing & Technology",
+          "durationYears": 4,
+          "cutoffAggregate": 10,
+          "genderAffirmativeActionCutoff": 11,
+          "feePayingCutoff": 15,
+          "cutoffType": "OFFICIAL_PUBLISHED",
+          "requiredSubjects": [
+            "Core Mathematics",
+            "English Language",
+            "Integrated Science"
+          ],
+          "minimumGrades": {
+            "Core Mathematics": "C4",
+            "English Language": "C6",
+            "Integrated Science": "C6"
+          },
+          "electiveGroup": "Science, General Arts, Business, or General Knowledge in Art",
+          "sourceUrl": "https://admissions.ug.edu.gh/undergraduate/cut-off"
+        },
+        {
+          "name": "BSc Computer Engineering",
+          "faculty": "School of Engineering Sciences",
+          "category": "Engineering",
+          "durationYears": 4,
+          "cutoffAggregate": 7,
+          "genderAffirmativeActionCutoff": null,
+          "feePayingCutoff": 8,
+          "cutoffType": "OFFICIAL_PUBLISHED",
+          "requiredSubjects": [
+            "Core Mathematics",
+            "English Language",
+            "Elective Mathematics",
+            "Physics",
+            "Chemistry"
+          ],
+          "minimumGrades": {
+            "Core Mathematics": "C6",
+            "English Language": "C6",
+            "Elective Mathematics": "B3",
+            "Physics": "C6"
+          },
+          "electiveGroup": "Science",
+          "sourceUrl": "https://admissions.ug.edu.gh/undergraduate/cut-off"
+        },
+        {
+          "name": "BSc Biomedical Engineering",
+          "faculty": "School of Engineering Sciences",
+          "category": "Engineering",
+          "durationYears": 4,
+          "cutoffAggregate": 6,
+          "genderAffirmativeActionCutoff": null,
+          "feePayingCutoff": 8,
+          "cutoffType": "OFFICIAL_PUBLISHED",
+          "requiredSubjects": [
+            "Core Mathematics",
+            "English Language",
+            "Elective Mathematics",
+            "Physics",
+            "Chemistry"
+          ],
+          "minimumGrades": {
+            "Core Mathematics": "C6",
+            "English Language": "C6",
+            "Elective Mathematics": "B3"
+          },
+          "electiveGroup": "Science",
+          "sourceUrl": "https://admissions.ug.edu.gh/undergraduate/cut-off"
+        },
+        {
+          "name": "Bachelor of Laws (LLB)",
+          "faculty": "University of Ghana School of Law",
+          "category": "Law & Legal Studies",
+          "durationYears": 4,
+          "cutoffAggregate": 7,
+          "feePayingCutoff": null,
+          "cutoffType": "OFFICIAL_PUBLISHED",
+          "requiredSubjects": [
+            "Core Mathematics",
+            "English Language"
+          ],
+          "minimumGrades": {
+            "Core Mathematics": "C6",
+            "English Language": "C6"
+          },
+          "electiveGroup": "General Arts, Business, Science, Visual Arts",
+          "sourceUrl": "https://admissions.ug.edu.gh/undergraduate/cut-off"
+        },
+        {
+          "name": "BSc Administration",
+          "faculty": "University of Ghana Business School",
+          "category": "Business & Management",
+          "durationYears": 4,
+          "cutoffAggregate": 9,
+          "genderAffirmativeActionCutoff": null,
+          "feePayingCutoff": 12,
+          "cutoffType": "OFFICIAL_PUBLISHED",
+          "requiredSubjects": [
+            "Core Mathematics",
+            "English Language"
+          ],
+          "minimumGrades": {
+            "Core Mathematics": "C6",
+            "English Language": "C6"
+          },
+          "electiveGroup": "Business, General Arts, Science",
+          "sourceUrl": "https://admissions.ug.edu.gh/undergraduate/cut-off"
+        },
+        {
+          "name": "Bachelor of Arts (General Arts Background)",
+          "faculty": "College of Humanities",
+          "category": "Humanities & Social Sciences",
+          "durationYears": 4,
+          "cutoffAggregate": 16,
+          "genderAffirmativeActionCutoff": 17,
+          "feePayingCutoff": 20,
+          "cutoffType": "OFFICIAL_PUBLISHED",
+          "requiredSubjects": [
+            "Core Mathematics",
+            "English Language",
+            "Social Studies"
+          ],
+          "minimumGrades": {
+            "Core Mathematics": "C6",
+            "English Language": "C6"
+          },
+          "electiveGroup": "General Arts",
+          "sourceUrl": "https://admissions.ug.edu.gh/undergraduate/cut-off"
+        }
+      ]
+    },
+    {
+      "university": {
+        "name": "Kwame Nkrumah University of Science and Technology",
+        "shortName": "KNUST",
+        "location": "Kumasi",
+        "region": "Ashanti",
+        "type": "public"
+      },
+      "admissionsCycle": "2024/2025 - 2025/2026",
+      "officialPortal": "https://www.knust.edu.gh",
+      "sources": [
+        "https://www.knust.edu.gh/admissions/prospective/ugadmissions",
+        "https://www.knust.edu.gh/announcements/general/urgent-notice-all-undergraduate-applicants"
+      ],
+      "cutoffStatus": "OFFICIAL_HISTORICAL_GUIDE_2024_2025",
+      "generalEligibilityAggregateWASSCE": 24,
+      "programmes": [
+        {
+          "name": "BSc Human Biology (Medicine - MB ChB)",
+          "faculty": "School of Medicine and Dentistry, College of Health Sciences",
+          "category": "Health & Medical Sciences",
+          "durationYears": 6,
+          "cutoffAggregate": 6,
+          "genderAffirmativeActionCutoff": 6,
+          "feePayingCutoff": 8,
+          "cutoffType": "OFFICIAL_HISTORICAL_GUIDE",
+          "requiredSubjects": [
+            "English Language",
+            "Core Mathematics",
+            "Integrated Science",
+            "Biology",
+            "Chemistry"
+          ],
+          "minimumGrades": {
+            "English Language": "C6",
+            "Core Mathematics": "C6",
+            "Integrated Science": "C6",
+            "Biology": "A1",
+            "Chemistry": "A1"
+          },
+          "electiveGroup": "Science",
+          "sourceUrl": "https://www.knust.edu.gh/announcements/general/urgent-notice-all-undergraduate-applicants"
+        },
+        {
+          "name": "Doctor of Pharmacy (PharmD)",
+          "faculty": "Faculty of Pharmacy & Pharmaceutical Sciences",
+          "category": "Health & Medical Sciences",
+          "durationYears": 6,
+          "cutoffAggregate": 6,
+          "genderAffirmativeActionCutoff": 7,
+          "feePayingCutoff": 9,
+          "cutoffType": "OFFICIAL_HISTORICAL_GUIDE",
+          "requiredSubjects": [
+            "English Language",
+            "Core Mathematics",
+            "Integrated Science",
+            "Chemistry",
+            "Biology"
+          ],
+          "minimumGrades": {
+            "English Language": "C6",
+            "Core Mathematics": "C6",
+            "Integrated Science": "C6",
+            "Chemistry": "A1",
+            "Biology": "B2"
+          },
+          "electiveGroup": "Science",
+          "sourceUrl": "https://www.knust.edu.gh/announcements/general/urgent-notice-all-undergraduate-applicants"
+        },
+        {
+          "name": "BSc Nursing",
+          "faculty": "Department of Nursing, College of Health Sciences",
+          "category": "Health & Medical Sciences",
+          "durationYears": 4,
+          "cutoffAggregate": 8,
+          "genderAffirmativeActionCutoff": 9,
+          "feePayingCutoff": 12,
+          "cutoffType": "OFFICIAL_HISTORICAL_GUIDE",
+          "requiredSubjects": [
+            "English Language",
+            "Core Mathematics",
+            "Integrated Science"
+          ],
+          "minimumGrades": {
+            "English Language": "C6",
+            "Core Mathematics": "C6",
+            "Integrated Science": "C6"
+          },
+          "electiveGroup": "Science, General Arts",
+          "sourceUrl": "https://www.knust.edu.gh/announcements/general/urgent-notice-all-undergraduate-applicants"
+        },
+        {
+          "name": "BSc Computer Engineering",
+          "faculty": "College of Engineering",
+          "category": "Engineering",
+          "durationYears": 4,
+          "cutoffAggregate": 9,
+          "genderAffirmativeActionCutoff": 10,
+          "feePayingCutoff": 12,
+          "cutoffType": "OFFICIAL_HISTORICAL_GUIDE",
+          "requiredSubjects": [
+            "English Language",
+            "Core Mathematics",
+            "Integrated Science",
+            "Elective Mathematics",
+            "Physics"
+          ],
+          "minimumGrades": {
+            "English Language": "C6",
+            "Core Mathematics": "C6",
+            "Integrated Science": "C6",
+            "Elective Mathematics": "B3",
+            "Physics": "B3"
+          },
+          "electiveGroup": "Science",
+          "sourceUrl": "https://www.knust.edu.gh/announcements/general/urgent-notice-all-undergraduate-applicants"
+        },
+        {
+          "name": "BSc Electrical/Electronic Engineering",
+          "faculty": "College of Engineering",
+          "category": "Engineering",
+          "durationYears": 4,
+          "cutoffAggregate": 8,
+          "genderAffirmativeActionCutoff": 9,
+          "feePayingCutoff": 11,
+          "cutoffType": "OFFICIAL_HISTORICAL_GUIDE",
+          "requiredSubjects": [
+            "English Language",
+            "Core Mathematics",
+            "Integrated Science",
+            "Elective Mathematics",
+            "Physics"
+          ],
+          "minimumGrades": {
+            "English Language": "C6",
+            "Core Mathematics": "C6",
+            "Integrated Science": "C6",
+            "Elective Mathematics": "B3",
+            "Physics": "B3"
+          },
+          "electiveGroup": "Science",
+          "sourceUrl": "https://www.knust.edu.gh/announcements/general/urgent-notice-all-undergraduate-applicants"
+        },
+        {
+          "name": "BSc Computer Science",
+          "faculty": "Faculty of Physical and Computational Sciences",
+          "category": "Computing & Technology",
+          "durationYears": 4,
+          "cutoffAggregate": 11,
+          "genderAffirmativeActionCutoff": 12,
+          "feePayingCutoff": 15,
+          "cutoffType": "OFFICIAL_HISTORICAL_GUIDE",
+          "requiredSubjects": [
+            "English Language",
+            "Core Mathematics",
+            "Integrated Science",
+            "Elective Mathematics",
+            "Physics"
+          ],
+          "minimumGrades": {
+            "English Language": "C6",
+            "Core Mathematics": "C6",
+            "Integrated Science": "C6",
+            "Elective Mathematics": "B3"
+          },
+          "electiveGroup": "Science",
+          "sourceUrl": "https://www.knust.edu.gh/announcements/general/urgent-notice-all-undergraduate-applicants"
+        },
+        {
+          "name": "Bachelor of Laws (LLB)",
+          "faculty": "Faculty of Law",
+          "category": "Law & Legal Studies",
+          "durationYears": 4,
+          "cutoffAggregate": 7,
+          "genderAffirmativeActionCutoff": 8,
+          "feePayingCutoff": 10,
+          "cutoffType": "OFFICIAL_HISTORICAL_GUIDE",
+          "requiredSubjects": [
+            "English Language",
+            "Core Mathematics"
+          ],
+          "minimumGrades": {
+            "English Language": "B2",
+            "Core Mathematics": "C6"
+          },
+          "electiveGroup": "General Arts, Business, Science",
+          "sourceUrl": "https://www.knust.edu.gh/announcements/general/urgent-notice-all-undergraduate-applicants"
+        },
+        {
+          "name": "BSc Business Administration",
+          "faculty": "KNUST School of Business",
+          "category": "Business & Management",
+          "durationYears": 4,
+          "cutoffAggregate": 9,
+          "genderAffirmativeActionCutoff": 10,
+          "feePayingCutoff": 14,
+          "cutoffType": "OFFICIAL_HISTORICAL_GUIDE",
+          "requiredSubjects": [
+            "English Language",
+            "Core Mathematics"
+          ],
+          "minimumGrades": {
+            "English Language": "C6",
+            "Core Mathematics": "C6"
+          },
+          "electiveGroup": "Business, General Arts, Science",
+          "sourceUrl": "https://www.knust.edu.gh/announcements/general/urgent-notice-all-undergraduate-applicants"
+        }
+      ]
+    },
+    {
+      "university": {
+        "name": "University of Cape Coast",
+        "shortName": "UCC",
+        "location": "Cape Coast",
+        "region": "Central",
+        "type": "public"
+      },
+      "admissionsCycle": "2024/2025 - 2025/2026",
+      "officialPortal": "https://admissions.ucc.edu.gh",
+      "sources": [
+        "https://daa.ucc.edu.gh/cut-point"
+      ],
+      "cutoffStatus": "OFFICIAL_PUBLISHED_2025",
+      "programmes": [
+        {
+          "name": "Bachelor of Medicine and Bachelor of Surgery (MB ChB)",
+          "faculty": "School of Medical Sciences",
+          "category": "Health & Medical Sciences",
+          "durationYears": 6,
+          "cutoffAggregate": 8,
+          "cutoffType": "OFFICIAL_PUBLISHED",
+          "requiredSubjects": [
+            "English Language",
+            "Core Mathematics",
+            "Integrated Science",
+            "Biology",
+            "Chemistry",
+            "Physics"
+          ],
+          "minimumGrades": {
+            "English Language": "C6",
+            "Core Mathematics": "C6",
+            "Integrated Science": "C6",
+            "Biology": "B2",
+            "Chemistry": "B2"
+          },
+          "electiveGroup": "Science",
+          "sourceUrl": "https://daa.ucc.edu.gh/cut-point"
+        },
+        {
+          "name": "Doctor of Pharmacy (PharmD)",
+          "faculty": "School of Pharmacy and Pharmaceutical Sciences",
+          "category": "Health & Medical Sciences",
+          "durationYears": 6,
+          "cutoffAggregate": 9,
+          "cutoffType": "OFFICIAL_PUBLISHED",
+          "requiredSubjects": [
+            "English Language",
+            "Core Mathematics",
+            "Integrated Science",
+            "Chemistry",
+            "Biology"
+          ],
+          "minimumGrades": {
+            "English Language": "C6",
+            "Core Mathematics": "C6",
+            "Integrated Science": "C6"
+          },
+          "electiveGroup": "Science",
+          "sourceUrl": "https://daa.ucc.edu.gh/cut-point"
+        },
+        {
+          "name": "BSc Nursing",
+          "faculty": "School of Nursing and Midwifery",
+          "category": "Health & Medical Sciences",
+          "durationYears": 4,
+          "cutoffAggregate": 12,
+          "cutoffType": "OFFICIAL_PUBLISHED",
+          "requiredSubjects": [
+            "English Language",
+            "Core Mathematics",
+            "Integrated Science"
+          ],
+          "minimumGrades": {
+            "English Language": "C6",
+            "Core Mathematics": "C6",
+            "Integrated Science": "C6"
+          },
+          "electiveGroup": "Science, General Arts",
+          "sourceUrl": "https://daa.ucc.edu.gh/cut-point"
+        },
+        {
+          "name": "BSc Computer Science",
+          "faculty": "School of Physical Sciences",
+          "category": "Computing & Technology",
+          "durationYears": 4,
+          "cutoffAggregate": 15,
+          "cutoffType": "OFFICIAL_PUBLISHED",
+          "requiredSubjects": [
+            "English Language",
+            "Core Mathematics",
+            "Integrated Science",
+            "Elective Mathematics"
+          ],
+          "minimumGrades": {
+            "English Language": "C6",
+            "Core Mathematics": "C6",
+            "Elective Mathematics": "C6"
+          },
+          "electiveGroup": "Science",
+          "sourceUrl": "https://daa.ucc.edu.gh/cut-point"
+        },
+        {
+          "name": "BSc Information Technology",
+          "faculty": "School of Physical Sciences",
+          "category": "Computing & Technology",
+          "durationYears": 4,
+          "cutoffAggregate": 15,
+          "cutoffType": "OFFICIAL_PUBLISHED",
+          "requiredSubjects": [
+            "English Language",
+            "Core Mathematics"
+          ],
+          "minimumGrades": {
+            "English Language": "C6",
+            "Core Mathematics": "C6"
+          },
+          "electiveGroup": "Science, Business, General Arts",
+          "sourceUrl": "https://daa.ucc.edu.gh/cut-point"
+        },
+        {
+          "name": "Bachelor of Laws (LLB)",
+          "faculty": "Faculty of Law",
+          "category": "Law & Legal Studies",
+          "durationYears": 4,
+          "cutoffAggregate": 12,
+          "cutoffType": "OFFICIAL_PUBLISHED",
+          "requiredSubjects": [
+            "English Language",
+            "Core Mathematics"
+          ],
+          "minimumGrades": {
+            "English Language": "B2",
+            "Core Mathematics": "C6"
+          },
+          "electiveGroup": "General Arts, Business, Science",
+          "sourceUrl": "https://daa.ucc.edu.gh/cut-point"
+        },
+        {
+          "name": "BCom Accounting",
+          "faculty": "School of Business",
+          "category": "Business & Management",
+          "durationYears": 4,
+          "cutoffAggregate": 15,
+          "cutoffType": "OFFICIAL_PUBLISHED",
+          "requiredSubjects": [
+            "English Language",
+            "Core Mathematics"
+          ],
+          "minimumGrades": {
+            "English Language": "C6",
+            "Core Mathematics": "C6"
+          },
+          "electiveGroup": "Business, General Arts, Science",
+          "sourceUrl": "https://daa.ucc.edu.gh/cut-point"
+        },
+        {
+          "name": "B.Ed Accounting",
+          "faculty": "Faculty of Humanities and Social Sciences Education",
+          "category": "Education",
+          "durationYears": 4,
+          "cutoffAggregate": 18,
+          "cutoffType": "OFFICIAL_PUBLISHED",
+          "requiredSubjects": [
+            "English Language",
+            "Core Mathematics",
+            "Financial Accounting"
+          ],
+          "minimumGrades": {
+            "English Language": "C6",
+            "Core Mathematics": "C6",
+            "Financial Accounting": "C6"
+          },
+          "electiveGroup": "Business",
+          "sourceUrl": "https://daa.ucc.edu.gh/cut-point"
+        }
+      ]
+    },
+    {
+      "university": {
+        "name": "University of Health and Allied Sciences",
+        "shortName": "UHAS",
+        "location": "Ho",
+        "region": "Volta",
+        "type": "public"
+      },
+      "admissionsCycle": "2024/2025 - 2025/2026",
+      "officialPortal": "https://uhas.edu.gh",
+      "sources": [
+        "https://uhas.edu.gh/uhas/admission/cutoff-points"
+      ],
+      "cutoffStatus": "OFFICIAL_GUIDE_2026_2027",
+      "programmes": [
+        {
+          "name": "Bachelor of Medicine and Surgery (MB ChB)",
+          "faculty": "School of Medicine",
+          "category": "Health & Medical Sciences",
+          "durationYears": 6,
+          "cutoffAggregate": 8,
+          "cutoffType": "OFFICIAL_GUIDE_2026_2027",
+          "requiredSubjects": [
+            "English Language",
+            "Core Mathematics",
+            "Integrated Science",
+            "Chemistry",
+            "Biology",
+            "Physics"
+          ],
+          "minimumGrades": {
+            "English Language": "C6",
+            "Core Mathematics": "C6",
+            "Integrated Science": "C6",
+            "Chemistry": "B2",
+            "Biology": "B2"
+          },
+          "electiveGroup": "Science",
+          "sourceUrl": "https://uhas.edu.gh/uhas/admission/cutoff-points"
+        },
+        {
+          "name": "Doctor of Pharmacy (PharmD)",
+          "faculty": "School of Pharmacy",
+          "category": "Health & Medical Sciences",
+          "durationYears": 6,
+          "cutoffAggregate": 8,
+          "cutoffType": "OFFICIAL_GUIDE_2026_2027",
+          "requiredSubjects": [
+            "English Language",
+            "Core Mathematics",
+            "Integrated Science",
+            "Chemistry",
+            "Biology"
+          ],
+          "minimumGrades": {
+            "English Language": "C6",
+            "Core Mathematics": "C6",
+            "Integrated Science": "C6"
+          },
+          "electiveGroup": "Science",
+          "sourceUrl": "https://uhas.edu.gh/uhas/admission/cutoff-points"
+        },
+        {
+          "name": "BSc Nursing",
+          "faculty": "School of Nursing and Midwifery",
+          "category": "Health & Medical Sciences",
+          "durationYears": 4,
+          "cutoffAggregate": 15,
+          "cutoffType": "OFFICIAL_GUIDE_2026_2027",
+          "requiredSubjects": [
+            "English Language",
+            "Core Mathematics",
+            "Integrated Science"
+          ],
+          "minimumGrades": {
+            "English Language": "C6",
+            "Core Mathematics": "C6",
+            "Integrated Science": "C6"
+          },
+          "electiveGroup": "Science, General Arts",
+          "sourceUrl": "https://uhas.edu.gh/uhas/admission/cutoff-points"
+        },
+        {
+          "name": "BSc Medical Laboratory Science",
+          "faculty": "School of Allied Health Sciences",
+          "category": "Allied Health Sciences",
+          "durationYears": 4,
+          "cutoffAggregate": 10,
+          "cutoffType": "OFFICIAL_GUIDE_2026_2027",
+          "requiredSubjects": [
+            "English Language",
+            "Core Mathematics",
+            "Integrated Science",
+            "Chemistry",
+            "Biology",
+            "Physics"
+          ],
+          "minimumGrades": {
+            "English Language": "C6",
+            "Core Mathematics": "C6",
+            "Integrated Science": "C6"
+          },
+          "electiveGroup": "Science",
+          "sourceUrl": "https://uhas.edu.gh/uhas/admission/cutoff-points"
+        }
+      ]
+    },
+    {
+      "university": {
+        "name": "Ghana Communication Technology University",
+        "shortName": "GCTU",
+        "location": "Tesano, Accra",
+        "region": "Greater Accra",
+        "type": "public"
+      },
+      "admissionsCycle": "2024/2025 - 2025/2026",
+      "officialPortal": "https://site.gctu.edu.gh",
+      "sources": [
+        "https://site.gctu.edu.gh/faqs/what-are-the-cut-off-points-for-admissions-into-gtuc.aspx",
+        "https://site.gctu.edu.gh/undergraduate-programmes"
+      ],
+      "cutoffStatus": "NO_RIGID_PROGRAMME_CUTOFF",
+      "generalEligibilityAggregateWASSCE": 24,
+      "programmes": [
+        {
+          "name": "BSc Computer Science",
+          "faculty": "Faculty of Computing and Information Systems",
+          "category": "Computing & Technology",
+          "durationYears": 4,
+          "cutoffAggregate": null,
+          "cutoffType": "NO_RIGID_PROGRAMME_CUTOFF",
+          "requiredSubjects": [
+            "English Language",
+            "Core Mathematics",
+            "Integrated Science",
+            "Elective Mathematics"
+          ],
+          "minimumGrades": {
+            "English Language": "C6",
+            "Core Mathematics": "C6",
+            "Elective Mathematics": "C6"
+          },
+          "electiveGroup": "Science",
+          "sourceUrl": "https://site.gctu.edu.gh/faqs/what-are-the-cut-off-points-for-admissions-into-gtuc.aspx"
+        },
+        {
+          "name": "BSc Information Technology",
+          "faculty": "Faculty of Computing and Information Systems",
+          "category": "Computing & Technology",
+          "durationYears": 4,
+          "cutoffAggregate": null,
+          "cutoffType": "NO_RIGID_PROGRAMME_CUTOFF",
+          "requiredSubjects": [
+            "English Language",
+            "Core Mathematics"
+          ],
+          "minimumGrades": {
+            "English Language": "C6",
+            "Core Mathematics": "C6"
+          },
+          "electiveGroup": "Science, Business, General Arts",
+          "sourceUrl": "https://site.gctu.edu.gh/faqs/what-are-the-cut-off-points-for-admissions-into-gtuc.aspx"
+        },
+        {
+          "name": "BSc Telecommunication Engineering",
+          "faculty": "Faculty of Engineering",
+          "category": "Engineering",
+          "durationYears": 4,
+          "cutoffAggregate": null,
+          "cutoffType": "NO_RIGID_PROGRAMME_CUTOFF",
+          "requiredSubjects": [
+            "English Language",
+            "Core Mathematics",
+            "Integrated Science",
+            "Elective Mathematics",
+            "Physics"
+          ],
+          "minimumGrades": {
+            "English Language": "C6",
+            "Core Mathematics": "C6",
+            "Elective Mathematics": "C6",
+            "Physics": "C6"
+          },
+          "electiveGroup": "Science, Technical",
+          "sourceUrl": "https://site.gctu.edu.gh/faqs/what-are-the-cut-off-points-for-admissions-into-gtuc.aspx"
+        },
+        {
+          "name": "BSc Software Engineering",
+          "faculty": "Faculty of Computing and Information Systems",
+          "category": "Computing & Technology",
+          "durationYears": 4,
+          "cutoffAggregate": null,
+          "cutoffType": "NO_RIGID_PROGRAMME_CUTOFF",
+          "requiredSubjects": [
+            "English Language",
+            "Core Mathematics",
+            "Elective Mathematics"
+          ],
+          "minimumGrades": {
+            "English Language": "C6",
+            "Core Mathematics": "C6",
+            "Elective Mathematics": "C6"
+          },
+          "electiveGroup": "Science",
+          "sourceUrl": "https://site.gctu.edu.gh/undergraduate-programmes"
+        },
+        {
+          "name": "BSc Data Science and Analytics",
+          "faculty": "Faculty of Computing and Information Systems",
+          "category": "Computing & Technology",
+          "durationYears": 4,
+          "cutoffAggregate": null,
+          "cutoffType": "NO_RIGID_PROGRAMME_CUTOFF",
+          "requiredSubjects": [
+            "English Language",
+            "Core Mathematics",
+            "Elective Mathematics"
+          ],
+          "minimumGrades": {
+            "English Language": "C6",
+            "Core Mathematics": "C6"
+          },
+          "electiveGroup": "Science, Business",
+          "sourceUrl": "https://site.gctu.edu.gh/undergraduate-programmes"
+        },
+        {
+          "name": "BSc Computer Science (Cyber Security)",
+          "faculty": "Faculty of Computing and Information Systems",
+          "category": "Computing & Technology",
+          "durationYears": 4,
+          "cutoffAggregate": null,
+          "cutoffType": "NO_RIGID_PROGRAMME_CUTOFF",
+          "requiredSubjects": [
+            "English Language",
+            "Core Mathematics",
+            "Elective Mathematics"
+          ],
+          "minimumGrades": {
+            "English Language": "C6",
+            "Core Mathematics": "C6"
+          },
+          "electiveGroup": "Science",
+          "sourceUrl": "https://site.gctu.edu.gh/undergraduate-programmes"
+        },
+        {
+          "name": "BSc Financial Technology",
+          "faculty": "Faculty of Computing and Information Systems",
+          "category": "Computing & Technology",
+          "durationYears": 4,
+          "cutoffAggregate": null,
+          "cutoffType": "NO_RIGID_PROGRAMME_CUTOFF",
+          "requiredSubjects": [
+            "English Language",
+            "Core Mathematics"
+          ],
+          "minimumGrades": {
+            "English Language": "C6",
+            "Core Mathematics": "C6"
+          },
+          "electiveGroup": "Business, Science, General Arts",
+          "sourceUrl": "https://site.gctu.edu.gh/undergraduate-programmes"
+        }
+      ]
+    },
+    {
+      "university": {
+        "name": "University for Development Studies",
+        "shortName": "UDS",
+        "location": "Tamale",
+        "region": "Northern",
+        "type": "public"
+      },
+      "admissionsCycle": "2024/2025 - 2025/2026",
+      "officialPortal": "https://www.uds.edu.gh",
+      "sources": [
+        "https://www.uds.edu.gh/academics/programmes/",
+        "https://www.uds.edu.gh/admissions/entry-requirements",
+        "https://www.uds.edu.gh/admissions/cut-off-points"
+      ],
+      "cutoffStatus": "OFFICIAL_HISTORICAL_HEALTH_GUIDE_ONLY",
+      "generalEligibilityAggregateWASSCE": 36,
+      "programmes": [
+        {
+          "name": "Bachelor of Medicine and Bachelor of Surgery (MB ChB)",
+          "faculty": "School of Medicine",
+          "category": "Health & Medical Sciences",
+          "durationYears": 6,
+          "cutoffAggregate": 9,
+          "cutoffType": "OFFICIAL_HISTORICAL_HEALTH_GUIDE",
+          "requiredSubjects": [
+            "English Language",
+            "Core Mathematics",
+            "Integrated Science",
+            "Biology",
+            "Chemistry",
+            "Physics"
+          ],
+          "minimumGrades": {
+            "English Language": "C6",
+            "Core Mathematics": "C6",
+            "Integrated Science": "C6",
+            "Biology": "C6",
+            "Chemistry": "C6"
+          },
+          "electiveGroup": "Science",
+          "sourceUrl": "https://www.uds.edu.gh/admissions/entry-requirements"
+        },
+        {
+          "name": "Doctor of Pharmacy (PharmD)",
+          "faculty": "School of Pharmacy and Pharmaceutical Sciences",
+          "category": "Health & Medical Sciences",
+          "durationYears": 6,
+          "cutoffAggregate": 12,
+          "feePayingCutoff": 18,
+          "cutoffType": "OFFICIAL_HISTORICAL_HEALTH_GUIDE",
+          "requiredSubjects": [
+            "English Language",
+            "Core Mathematics",
+            "Integrated Science",
+            "Chemistry",
+            "Biology",
+            "Physics"
+          ],
+          "minimumGrades": {
+            "English Language": "C6",
+            "Core Mathematics": "C6",
+            "Integrated Science": "C6"
+          },
+          "electiveGroup": "Science",
+          "sourceUrl": "https://www.uds.edu.gh/admissions/entry-requirements"
+        },
+        {
+          "name": "BSc Nursing",
+          "faculty": "School of Nursing and Midwifery",
+          "category": "Health & Medical Sciences",
+          "durationYears": 4,
+          "cutoffAggregate": 10,
+          "cutoffType": "OFFICIAL_HISTORICAL_HEALTH_GUIDE",
+          "requiredSubjects": [
+            "English Language",
+            "Core Mathematics",
+            "Integrated Science"
+          ],
+          "minimumGrades": {
+            "English Language": "C6",
+            "Core Mathematics": "C6",
+            "Integrated Science": "C6"
+          },
+          "electiveGroup": "Science, General Arts",
+          "sourceUrl": "https://www.uds.edu.gh/admissions/entry-requirements"
+        },
+        {
+          "name": "BSc Computer Science",
+          "faculty": "Faculty of Physical Sciences",
+          "category": "Computing & Technology",
+          "durationYears": 4,
+          "cutoffAggregate": null,
+          "cutoffType": "NO_CURRENT_PROGRAMME_CUTOFF_VERIFIED",
+          "requiredSubjects": [
+            "English Language",
+            "Core Mathematics",
+            "Elective Mathematics"
+          ],
+          "minimumGrades": {
+            "English Language": "C6",
+            "Core Mathematics": "C6",
+            "Elective Mathematics": "C6"
+          },
+          "electiveGroup": "Science",
+          "sourceUrl": "https://www.uds.edu.gh/admissions/entry-requirements"
+        }
+      ]
+    },
+    {
+      "university": {
+        "name": "University of Mines and Technology",
+        "shortName": "UMaT",
+        "location": "Tarkwa",
+        "region": "Western",
+        "type": "public"
+      },
+      "admissionsCycle": "2024/2025 - 2025/2026",
+      "officialPortal": "https://admissions.umat.edu.gh",
+      "sources": [
+        "https://admissions.umat.edu.gh/available-programmes-undergraduates/"
+      ],
+      "cutoffStatus": "NO_PROGRAMME_SPECIFIC_CUTOFF_VERIFIED",
+      "generalEligibilityAggregateWASSCE": 36,
+      "programmes": [
+        {
+          "name": "BSc Mining Engineering",
+          "faculty": "Faculty of Mineral Resources Technology",
+          "category": "Engineering",
+          "durationYears": 4,
+          "cutoffAggregate": null,
+          "cutoffType": "NO_PROGRAMME_SPECIFIC_CUTOFF_VERIFIED",
+          "requiredSubjects": [
+            "English Language",
+            "Core Mathematics",
+            "Integrated Science",
+            "Elective Mathematics",
+            "Physics",
+            "Chemistry"
+          ],
+          "minimumGrades": {
+            "English Language": "C6",
+            "Core Mathematics": "C6",
+            "Elective Mathematics": "C6",
+            "Physics": "C6"
+          },
+          "electiveGroup": "Science",
+          "sourceUrl": "https://admissions.umat.edu.gh/available-programmes-undergraduates/"
+        },
+        {
+          "name": "BSc Minerals Engineering",
+          "faculty": "Faculty of Mineral Resources Technology",
+          "category": "Engineering",
+          "durationYears": 4,
+          "cutoffAggregate": null,
+          "cutoffType": "NO_PROGRAMME_SPECIFIC_CUTOFF_VERIFIED",
+          "requiredSubjects": [
+            "English Language",
+            "Core Mathematics",
+            "Integrated Science",
+            "Elective Mathematics",
+            "Physics",
+            "Chemistry"
+          ],
+          "minimumGrades": {
+            "English Language": "C6",
+            "Core Mathematics": "C6",
+            "Elective Mathematics": "C6"
+          },
+          "electiveGroup": "Science",
+          "sourceUrl": "https://admissions.umat.edu.gh/available-programmes-undergraduates/"
+        },
+        {
+          "name": "BSc Computer Science and Engineering",
+          "faculty": "Faculty of Computing and Mathematical Sciences",
+          "category": "Computing & Technology",
+          "durationYears": 4,
+          "cutoffAggregate": null,
+          "cutoffType": "NO_PROGRAMME_SPECIFIC_CUTOFF_VERIFIED",
+          "requiredSubjects": [
+            "English Language",
+            "Core Mathematics",
+            "Integrated Science",
+            "Elective Mathematics",
+            "Physics"
+          ],
+          "minimumGrades": {
+            "English Language": "C6",
+            "Core Mathematics": "C6",
+            "Elective Mathematics": "C6"
+          },
+          "electiveGroup": "Science",
+          "sourceUrl": "https://admissions.umat.edu.gh/available-programmes-undergraduates/"
+        }
+      ]
+    },
+    {
+      "university": {
+        "name": "University of Professional Studies, Accra",
+        "shortName": "UPSA",
+        "location": "Accra",
+        "region": "Greater Accra",
+        "type": "public"
+      },
+      "admissionsCycle": "2024/2025 - 2025/2026",
+      "officialPortal": "https://admissions.upsa.edu.gh",
+      "sources": [
+        "https://admissions.upsa.edu.gh/admissions/undergraduate/undergraduate-programmes/",
+        "https://admissions.upsa.edu.gh/admissions/undergrad-entry-requirements/"
+      ],
+      "cutoffStatus": "NO_PROGRAMME_SPECIFIC_CUTOFF_VERIFIED",
+      "generalEligibilityAggregateWASSCE": 36,
+      "programmes": [
+        {
+          "name": "Bachelor of Laws (LLB)",
+          "faculty": "UPSA Law School",
+          "category": "Law & Legal Studies",
+          "durationYears": 4,
+          "cutoffAggregate": null,
+          "cutoffType": "NO_PROGRAMME_SPECIFIC_CUTOFF_VERIFIED",
+          "requiredSubjects": [
+            "English Language",
+            "Core Mathematics"
+          ],
+          "minimumGrades": {
+            "English Language": "B3",
+            "Core Mathematics": "C6"
+          },
+          "electiveGroup": "General Arts, Business, Science",
+          "sourceUrl": "https://admissions.upsa.edu.gh/admissions/undergraduate/undergraduate-programmes/"
+        },
+        {
+          "name": "BSc Accounting",
+          "faculty": "Faculty of Accounting and Finance",
+          "category": "Business & Management",
+          "durationYears": 4,
+          "cutoffAggregate": null,
+          "cutoffType": "NO_PROGRAMME_SPECIFIC_CUTOFF_VERIFIED",
+          "requiredSubjects": [
+            "English Language",
+            "Core Mathematics"
+          ],
+          "minimumGrades": {
+            "English Language": "C6",
+            "Core Mathematics": "C6"
+          },
+          "electiveGroup": "Business, General Arts, Science",
+          "sourceUrl": "https://admissions.upsa.edu.gh/admissions/undergraduate/undergraduate-programmes/"
+        },
+        {
+          "name": "BSc Information Technology",
+          "faculty": "Faculty of Information Technology and Communication Studies",
+          "category": "Computing & Technology",
+          "durationYears": 4,
+          "cutoffAggregate": null,
+          "cutoffType": "NO_PROGRAMME_SPECIFIC_CUTOFF_VERIFIED",
+          "requiredSubjects": [
+            "English Language",
+            "Core Mathematics"
+          ],
+          "minimumGrades": {
+            "English Language": "C6",
+            "Core Mathematics": "C6"
+          },
+          "electiveGroup": "Business, General Arts, Science",
+          "sourceUrl": "https://admissions.upsa.edu.gh/admissions/undergraduate/undergraduate-programmes/"
+        },
+        {
+          "name": "BSc Data Science and Analytics",
+          "faculty": "Faculty of Information Technology and Communication Studies",
+          "category": "Computing & Technology",
+          "durationYears": 4,
+          "cutoffAggregate": null,
+          "cutoffType": "NO_PROGRAMME_SPECIFIC_CUTOFF_VERIFIED",
+          "requiredSubjects": [
+            "English Language",
+            "Core Mathematics",
+            "Elective Mathematics"
+          ],
+          "minimumGrades": {
+            "English Language": "C6",
+            "Core Mathematics": "C6"
+          },
+          "electiveGroup": "Science, Business",
+          "sourceUrl": "https://admissions.upsa.edu.gh/admissions/undergraduate/undergraduate-programmes/"
+        }
+      ]
+    },
+    {
+      "university": {
+        "name": "Ashesi University",
+        "shortName": "Ashesi",
+        "location": "Berekuso",
+        "region": "Eastern",
+        "type": "private"
+      },
+      "admissionsCycle": "2024/2025 - 2025/2026",
+      "officialPortal": "https://ashesi.edu.gh",
+      "sources": [
+        "https://ashesi.edu.gh/how-to-apply/"
+      ],
+      "cutoffStatus": "HOLISTIC_ADMISSIONS",
+      "programmes": [
+        {
+          "name": "BSc Computer Science",
+          "faculty": "Department of Computer Science & Information Systems",
+          "category": "Computing & Technology",
+          "durationYears": 4,
+          "cutoffAggregate": null,
+          "cutoffType": "HOLISTIC_ADMISSIONS",
+          "requiredSubjects": [
+            "English Language",
+            "Core Mathematics",
+            "Integrated Science",
+            "Elective Mathematics"
+          ],
+          "minimumGrades": {
+            "English Language": "C6",
+            "Core Mathematics": "C6",
+            "Integrated Science": "C6",
+            "Elective Mathematics": "C6"
+          },
+          "electiveGroup": "Science",
+          "sourceUrl": "https://ashesi.edu.gh/how-to-apply/"
+        },
+        {
+          "name": "BSc Computer Engineering",
+          "faculty": "Department of Engineering",
+          "category": "Engineering",
+          "durationYears": 4,
+          "cutoffAggregate": null,
+          "cutoffType": "HOLISTIC_ADMISSIONS",
+          "requiredSubjects": [
+            "English Language",
+            "Core Mathematics",
+            "Integrated Science",
+            "Elective Mathematics",
+            "Physics"
+          ],
+          "minimumGrades": {
+            "English Language": "C6",
+            "Core Mathematics": "C6",
+            "Integrated Science": "C6",
+            "Elective Mathematics": "C6",
+            "Physics": "C6"
+          },
+          "electiveGroup": "Science",
+          "sourceUrl": "https://ashesi.edu.gh/how-to-apply/"
+        },
+        {
+          "name": "BSc Business Administration",
+          "faculty": "Department of Business Administration",
+          "category": "Business & Management",
+          "durationYears": 4,
+          "cutoffAggregate": null,
+          "cutoffType": "HOLISTIC_ADMISSIONS",
+          "requiredSubjects": [
+            "English Language",
+            "Core Mathematics"
+          ],
+          "minimumGrades": {
+            "English Language": "C6",
+            "Core Mathematics": "C6"
+          },
+          "electiveGroup": "General Arts, Business, Science",
+          "sourceUrl": "https://ashesi.edu.gh/how-to-apply/"
+        }
+      ]
+    },
+    {
+      "university": {
+        "name": "Academic City University College",
+        "shortName": "Academic City",
+        "location": "Haatso, Accra",
+        "region": "Greater Accra",
+        "type": "private"
+      },
+      "admissionsCycle": "2024/2025 - 2025/2026",
+      "officialPortal": "https://acity.edu.gh",
+      "sources": [
+        "https://acity.edu.gh/entry-requirements/"
+      ],
+      "cutoffStatus": "HOLISTIC_ADMISSIONS",
+      "programmes": [
+        {
+          "name": "BSc Artificial Intelligence",
+          "faculty": "Faculty of Computational Sciences & Informatics",
+          "category": "Computing & Technology",
+          "durationYears": 4,
+          "cutoffAggregate": null,
+          "cutoffType": "HOLISTIC_ADMISSIONS",
+          "requiredSubjects": [
+            "English Language",
+            "Core Mathematics",
+            "Integrated Science",
+            "Elective Mathematics",
+            "Physics"
+          ],
+          "minimumGrades": {
+            "English Language": "C6",
+            "Core Mathematics": "C6",
+            "Elective Mathematics": "C6",
+            "Physics": "C6"
+          },
+          "electiveGroup": "Science",
+          "sourceUrl": "https://acity.edu.gh/entry-requirements/"
+        },
+        {
+          "name": "BSc Computer Science",
+          "faculty": "Faculty of Computational Sciences & Informatics",
+          "category": "Computing & Technology",
+          "durationYears": 4,
+          "cutoffAggregate": null,
+          "cutoffType": "HOLISTIC_ADMISSIONS",
+          "requiredSubjects": [
+            "English Language",
+            "Core Mathematics",
+            "Integrated Science",
+            "Elective Mathematics"
+          ],
+          "minimumGrades": {
+            "English Language": "C6",
+            "Core Mathematics": "C6",
+            "Elective Mathematics": "C6"
+          },
+          "electiveGroup": "Science, Technical",
+          "sourceUrl": "https://acity.edu.gh/entry-requirements/"
+        }
+      ]
+    },
+    {
+      "university": {
+        "name": "Ministry of Health Nursing & Midwifery Training Colleges",
+        "shortName": "MOH Health Training",
+        "location": "Multiple locations across Ghana",
+        "region": "Nationwide",
+        "type": "public"
+      },
+      "admissionsCycle": "2026/2027",
+      "sources": [
+        "https://healthtraining.gov.gh/Entry_Requirements_3.pdf"
+      ],
+      "cutoffStatus": "NATIONAL_ENTRY_BENCHMARK",
+      "programmes": [
+        {
+          "name": "Diploma in Registered General Nursing (RGN)",
+          "faculty": "Nursing & Midwifery",
+          "category": "Health & Medical Sciences",
+          "durationYears": 3,
+          "cutoffAggregate": 36,
+          "cutoffType": "NATIONAL_ENTRY_BENCHMARK",
+          "requiredSubjects": [
+            "English Language",
+            "Core Mathematics",
+            "Integrated Science"
+          ],
+          "minimumGrades": {
+            "English Language": "C6",
+            "Core Mathematics": "C6",
+            "Integrated Science": "C6"
+          },
+          "electiveGroup": "Science, General Arts, Home Economics",
+          "sourceUrl": "https://healthtraining.gov.gh/Entry_Requirements_3.pdf"
+        },
+        {
+          "name": "Diploma in Registered Midwifery (RM)",
+          "faculty": "Nursing & Midwifery",
+          "category": "Health & Medical Sciences",
+          "durationYears": 3,
+          "cutoffAggregate": 36,
+          "cutoffType": "NATIONAL_ENTRY_BENCHMARK",
+          "requiredSubjects": [
+            "English Language",
+            "Core Mathematics",
+            "Integrated Science"
+          ],
+          "minimumGrades": {
+            "English Language": "C6",
+            "Core Mathematics": "C6",
+            "Integrated Science": "C6"
+          },
+          "electiveGroup": "Science, General Arts, Home Economics",
+          "sourceUrl": "https://healthtraining.gov.gh/Entry_Requirements_3.pdf"
+        }
+      ]
+    }
+  ]
+}

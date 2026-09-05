@@ -53,8 +53,8 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="#waitlist" className="hover:text-brand-blue transition-colors">
-                  Join Early Access
+                <Link href="#calculator" className="hover:text-brand-blue transition-colors">
+                  Calculate &amp; Match
                 </Link>
               </li>
             </ul>

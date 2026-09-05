@@ -23,7 +23,7 @@ export function FAQSection() {
     {
       question: "How much does it cost and what payment methods are accepted?",
       answer:
-        "A full results unlock is just GH₵20 per check. Payments are processed securely via Paystack, supporting MTN Mobile Money, Telecel Cash, AT Money, and all local debit/credit cards.",
+        "A full results unlock is just GH₵15 per check. Payments are processed securely via Paystack, supporting MTN Mobile Money, Telecel Cash, AT Money, and all local debit/credit cards.",
     },
     {
       question: "Can both regular school candidates and Nov/Dec private candidates use PassMarkGH?",
@@ -31,9 +31,9 @@ export function FAQSection() {
         "Yes! PassMarkGH supports all WASSCE candidates, whether you wrote the school exam (May/June) or private exams (Nov/Dec).",
     },
     {
-      question: "When will the full checker be live?",
+      question: "Is the checker live and updated for this academic year?",
       answer:
-        "The full application is launching in time for the official release of WASSCE results. By joining the priority waitlist today, you will receive an instant SMS / WhatsApp notification the moment results are out.",
+        "Yes! PassMarkGH is fully live with updated admission cut-off points and entry requirements across all major Ghanaian public and private universities.",
     },
   ];
 

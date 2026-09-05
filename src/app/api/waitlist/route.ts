@@ -3,7 +3,7 @@ import { z } from "zod";
 import { createClient } from "@/lib/supabase/server";
 
 const waitlistSchema = z.object({
-  name: z.string().min(2, "Name must be at least 2 characters"),
+  name: z.string().optional().default("WASSCE Candidate"),
   email: z.string().email("Please enter a valid email address"),
   phone: z.string().optional(),
   examType: z.enum(["WASSCE", "BECE"]).default("WASSCE"),

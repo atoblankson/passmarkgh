@@ -2,12 +2,12 @@ import React from "react";
 import { Check, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ScrollReveal } from "@/components/ui/scroll-reveal";
+import { scrollToHeroInput } from "@/components/landing/hero-action-bar";
 
 export function PricingSection() {
   return (
     <section id="pricing" className="py-20 px-4 sm:px-6">
       <div className="mx-auto max-w-4xl text-center">
-        
         <ScrollReveal variant="fade-up">
           <h2 className="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
             One Simple Price. Zero Hidden Fees.
@@ -31,7 +31,7 @@ export function PricingSection() {
 
               <div className="mt-6 flex items-baseline justify-center gap-1">
                 <span className="text-sm font-bold text-slate-500">GH₵</span>
-                <span className="text-5xl font-extrabold text-slate-900">20</span>
+                <span className="text-5xl font-extrabold text-slate-900">15</span>
                 <span className="text-xs text-slate-500 font-medium">/ per unlock</span>
               </div>
             </div>
@@ -72,13 +72,12 @@ export function PricingSection() {
 
             <div className="mt-8">
               <Button
-                asChild
-                className="w-full h-12 rounded-xl text-sm sm:text-base font-bold bg-brand-blue hover:bg-brand-darkBlue text-white shadow-md transition-all active:scale-[0.99]"
+                onClick={scrollToHeroInput}
+                type="button"
+                className="w-full h-12 rounded-xl text-sm sm:text-base font-bold bg-brand-blue hover:bg-brand-darkBlue text-white shadow-md transition-all active:scale-[0.99] flex items-center justify-center gap-2 cursor-pointer"
               >
-                <a href="#waitlist" className="flex items-center justify-center gap-2">
-                  <span>Join Waitlist for Launch Perks</span>
-                  <ArrowRight className="h-4 w-4" />
-                </a>
+                <span>Unlock All University Matches</span>
+                <ArrowRight className="h-4 w-4" />
               </Button>
             </div>
           </div>
