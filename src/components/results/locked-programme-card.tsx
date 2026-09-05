@@ -81,7 +81,8 @@ export function LockedProgrammeCard({ index = 0, match, onUnlockClick }: LockedP
                     alt={`${uniName} logo`}
                     className="h-full w-full object-contain"
                     onError={() => setImgError(true)}
-                    loading="lazy"
+                    loading="eager"
+                    decoding="async"
                   />
                 ) : (
                   <span className="text-[11px] font-black text-brand-blue">
