@@ -63,13 +63,13 @@ export default function HomePage() {
               </Button>
             </form>
 
-            <div className="mt-3 flex items-center justify-center gap-4 text-[11px] font-semibold text-slate-500">
+            <div className="mt-3 flex items-center justify-center gap-4 text-[11px] font-bold text-slate-950">
               <span className="flex items-center gap-1">
-                <CheckCircle className="h-3 w-3 text-emerald-600" /> Free Results Alert
+                <CheckCircle className="h-3.5 w-3.5 text-emerald-600" /> Free Results Alert
               </span>
-              <span>•</span>
+              <span className="text-slate-400">•</span>
               <span className="flex items-center gap-1">
-                <CheckCircle className="h-3 w-3 text-emerald-600" /> Covers UG, KNUST, UCC & more
+                <CheckCircle className="h-3.5 w-3.5 text-emerald-600" /> Covers UG, KNUST, UCC &amp; more
               </span>
             </div>
           </div>
