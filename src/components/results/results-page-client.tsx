@@ -585,31 +585,39 @@ export function ResultsPageClient() {
           </div>
         </>
       ) : (
-        /* Free User Experience: No search/filter bar, 2 blurred teaser rows, and prominent paywall card */
+        /* Free User Experience: First 2 qualifying programmes shown for free, 3rd card blurred & locked, followed by prominent paywall */
         <div className="space-y-5">
           {/* Teaser Section Header */}
           <div className="flex items-center justify-between px-1 text-xs text-slate-600 font-medium">
             <span className="flex items-center gap-1.5 font-bold text-slate-800">
               <Sparkles className="h-3.5 w-3.5 text-brand-blue" />
-              Eligible Programme Previews (Locked)
+              <span>Eligible Programme Previews (2 Free Previews)</span>
             </span>
             <span className="text-brand-blue bg-blue-50 border border-blue-200/80 px-2.5 py-0.5 rounded-full font-semibold text-[11px]">
               {counts.qualified + counts.feePaying} Qualified
             </span>
           </div>
 
-          {/* 2 Blurred & Locked Teaser Programme Cards */}
+          {/* 3 Cards: First 2 shown free, 3rd card blurred & locked */}
           <div className="space-y-3.5">
-            <LockedProgrammeCard
-              match={qualifiedMatches[0] || allMatches[0]}
-              index={0}
-              onUnlockClick={handleTeaserClick}
-            />
-            <LockedProgrammeCard
-              match={qualifiedMatches[1] || allMatches[1]}
-              index={1}
-              onUnlockClick={handleTeaserClick}
-            />
+            {/* Card 1: Free qualifying programme */}
+            {(qualifiedMatches[0] || allMatches[0]) && (
+              <ProgrammeCard match={qualifiedMatches[0] || allMatches[0]} />
+            )}
+
+            {/* Card 2: Free qualifying programme */}
+            {(qualifiedMatches[1] || allMatches[1]) && (
+              <ProgrammeCard match={qualifiedMatches[1] || allMatches[1]} />
+            )}
+
+            {/* Card 3: Blurred & locked qualifying programme */}
+            {(qualifiedMatches[2] || allMatches[2]) && (
+              <LockedProgrammeCard
+                match={qualifiedMatches[2] || allMatches[2]}
+                index={2}
+                onUnlockClick={handleTeaserClick}
+              />
+            )}
           </div>
 
           {/* Prominent Paywall Card: Unlock full results for ₵15 */}
