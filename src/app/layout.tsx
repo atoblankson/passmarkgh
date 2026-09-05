@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Sora } from "next/font/google";
-import { Analytics } from "@vercel/analytics/react";
+import { Analytics } from "@vercel/analytics/next";
 import { AdminVisitTracker } from "@/components/analytics/admin-visit-tracker";
 import "./globals.css";
 
