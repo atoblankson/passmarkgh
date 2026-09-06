@@ -99,7 +99,8 @@ export interface ProgrammeMatchResult {
   meetsAggregate: boolean;
   meetsSubjectRequirements: boolean;
   qualified: boolean;
-  matchScore: number; // 0-100 score indicating competitive buffer
+  matchScore: number; // 0-100 score indicating competitive standing
+  relevanceScore?: number; // 0-100 score indicating elective/stream field relevance
   statusTier: MatchStatusTier;
   missingRequirements?: string[];
   notes?: string;

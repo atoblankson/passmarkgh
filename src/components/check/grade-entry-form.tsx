@@ -157,10 +157,11 @@ export function GradeEntryForm() {
       allStudentGrades,
       calculation.aggregate,
       OFFICIAL_PROGRAMMES,
-      (gender || "prefer_not_to_say") as GenderOption
+      (gender || "prefer_not_to_say") as GenderOption,
+      selectedStreamId
     );
     return matches.filter((m) => m.qualified).length;
-  }, [allStudentGrades, calculation, gender]);
+  }, [allStudentGrades, calculation, gender, selectedStreamId]);
 
   // Save profile and route to /results
   const handleProceedToResults = useCallback(() => {

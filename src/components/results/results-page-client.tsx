@@ -181,17 +181,20 @@ export function ResultsPageClient() {
     return Math.max(0, aggregate - corePoints);
   }, [aggregate, corePoints]);
 
-  // Match all programmes with gender affirmative action support
+  // Match all programmes with gender affirmative action support and stream/elective personalization
   const allMatches: ProgrammeMatchResult[] = useMemo(() => {
     if (!profile || allStudentGrades.length === 0) return [];
     const matches = matchProgrammesAgainstGrades(
       allStudentGrades,
       aggregate,
       OFFICIAL_PROGRAMMES,
-      profile.gender
+      profile.gender,
+      profile.selectedStreamId
     );
 
-    // Sort: Qualified first, then Fee-Paying, then Competitive, then Others
+    // Personalised Recommendation Sort:
+    // 1. Status Tier Rank: Qualified (1) -> Fee-Paying (2) -> Competitive (3) -> Prerequisite Missing (4) -> Unqualified (5)
+    // 2. High-Converting Composite Score (60% Elective & Stream Relevance + 40% Admission Standing)
     return matches.sort((a, b) => {
       const rankOrder: Record<string, number> = {
         qualified: 1,
@@ -203,6 +206,19 @@ export function ResultsPageClient() {
       const rankA = rankOrder[a.statusTier] || 99;
       const rankB = rankOrder[b.statusTier] || 99;
       if (rankA !== rankB) return rankA - rankB;
+
+      // Composite score combining discipline field relevance with admission standing
+      const compositeA = (a.relevanceScore ?? 50) * 0.6 + a.matchScore * 0.4;
+      const compositeB = (b.relevanceScore ?? 50) * 0.6 + b.matchScore * 0.4;
+
+      if (Math.abs(compositeB - compositeA) > 1) {
+        return compositeB - compositeA;
+      }
+
+      // Tie breaker: higher field relevance first, then higher matchScore
+      if ((b.relevanceScore ?? 0) !== (a.relevanceScore ?? 0)) {
+        return (b.relevanceScore ?? 0) - (a.relevanceScore ?? 0);
+      }
       return b.matchScore - a.matchScore;
     });
   }, [profile, allStudentGrades, aggregate]);
