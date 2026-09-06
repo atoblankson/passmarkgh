@@ -610,7 +610,7 @@ export function ResultsPageClient() {
               <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
             </span>
             <span>
-              <strong className="text-slate-800 font-bold">761 students</strong> checked their qualifying programmes today
+              <strong className="text-slate-800 font-bold">761 students</strong> checked their qualifying programmes
             </span>
           </div>
 
