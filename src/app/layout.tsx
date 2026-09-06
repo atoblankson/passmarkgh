@@ -85,6 +85,9 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
+  verification: {
+    google: "rjGHzxvr4j0wbMgL86glnaypVNwofeMI9uNxWEFBmT4",
+  },
 };
 
 export const viewport: Viewport = {
@@ -109,7 +112,7 @@ const jsonLd = {
         "Ghana's #1 WASSCE Admission Eligibility Matcher and Best 6 Aggregate Calculator. Discover every university programme you qualify for across UG, KNUST, UCC, and more.",
       "offers": {
         "@type": "Offer",
-        "price": "20.00",
+        "price": "15.00",
         "priceCurrency": "GHS",
         "availability": "https://schema.org/InStock",
       },
