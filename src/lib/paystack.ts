@@ -73,22 +73,49 @@ export function calculateGrossWithPaystackFee(netInCedis: number = 15): {
   };
 }
 
+import fs from "fs";
+import path from "path";
+
 /**
  * Resolves the active Paystack Secret Key.
- * Supports PAYSTACK_MODE="live" | "test" or direct PAYSTACK_SECRET_KEY.
+ * Supports PAYSTACK_MODE="live" | "test", persistent admin_config.json, or direct PAYSTACK_SECRET_KEY.
+ * Defaults to "live" when live keys or live mode is configured.
  */
 export function getPaystackSecretKey(modeOverride?: string): string | undefined {
-  const mode = (modeOverride || process.env.PAYSTACK_MODE || "test").toLowerCase();
-  if (mode === "live") {
-    return process.env.PAYSTACK_LIVE_SECRET_KEY || process.env.PAYSTACK_SECRET_KEY;
+  let mode = modeOverride;
+
+  // Check persistent config on disk if modeOverride is not provided
+  if (!mode) {
+    try {
+      const configPath = path.join(process.cwd(), "src", "data", "admin_config.json");
+      if (fs.existsSync(configPath)) {
+        const raw = fs.readFileSync(configPath, "utf-8");
+        const parsed = JSON.parse(raw);
+        if (parsed.paystackMode === "live" || parsed.paystackMode === "test") {
+          mode = parsed.paystackMode;
+        }
+      }
+    } catch {}
   }
-  if (mode === "test") {
-    return process.env.PAYSTACK_TEST_SECRET_KEY || process.env.PAYSTACK_SECRET_KEY;
+
+  const resolvedMode = (
+    mode ||
+    process.env.PAYSTACK_MODE ||
+    (process.env.PAYSTACK_LIVE_SECRET_KEY ? "live" : "test")
+  ).toLowerCase();
+
+  if (resolvedMode === "live") {
+    return (
+      process.env.PAYSTACK_LIVE_SECRET_KEY ||
+      (process.env.PAYSTACK_SECRET_KEY?.startsWith("sk_live_") ? process.env.PAYSTACK_SECRET_KEY : undefined) ||
+      process.env.PAYSTACK_SECRET_KEY
+    );
   }
+
   return (
-    process.env.PAYSTACK_SECRET_KEY ||
-    process.env.PAYSTACK_LIVE_SECRET_KEY ||
-    process.env.PAYSTACK_TEST_SECRET_KEY
+    process.env.PAYSTACK_TEST_SECRET_KEY ||
+    (process.env.PAYSTACK_SECRET_KEY?.startsWith("sk_test_") ? process.env.PAYSTACK_SECRET_KEY : undefined) ||
+    process.env.PAYSTACK_SECRET_KEY
   );
 }
 

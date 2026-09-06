@@ -58,12 +58,18 @@ export async function GET(req: NextRequest) {
 
     if (secretKey && !secretKey.includes("your_secret_key_here")) {
       try {
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 3500);
+
         const pRes = await fetch("https://api.paystack.co/transaction?perPage=50", {
           headers: {
             Authorization: `Bearer ${secretKey}`,
           },
           cache: "no-store",
+          signal: controller.signal,
         });
+        clearTimeout(timeoutId);
+
         if (pRes.ok) {
           const json = await pRes.json();
           if (json.status && Array.isArray(json.data)) {
@@ -71,7 +77,7 @@ export async function GET(req: NextRequest) {
           }
         }
       } catch (pErr) {
-        console.warn("Paystack fetch error in admin route:", pErr);
+        console.warn("Paystack fetch notice in admin route (offline/timeout):", pErr instanceof Error ? pErr.message : pErr);
       }
     }
 
