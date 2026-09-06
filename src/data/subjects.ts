@@ -28,14 +28,20 @@ export const WASSCE_CORE_SUBJECTS: Subject[] = [
 ];
 
 export const WASSCE_ELECTIVE_SUBJECTS: Subject[] = [
-  // Science
+  // General Science & STEM
   { id: "elec-emaths", name: "Elective Mathematics", category: "elective", examType: "WASSCE", group: "General Science" },
   { id: "elec-physics", name: "Physics", category: "elective", examType: "WASSCE", group: "General Science" },
   { id: "elec-chem", name: "Chemistry", category: "elective", examType: "WASSCE", group: "General Science" },
   { id: "elec-bio", name: "Biology", category: "elective", examType: "WASSCE", group: "General Science" },
   { id: "elec-ict", name: "Information & Comm. Tech (Elective)", category: "elective", examType: "WASSCE", group: "General Science" },
+  { id: "elec-computing", name: "Computing", category: "elective", examType: "WASSCE", group: "General Science" },
+  { id: "elec-robotics", name: "Robotics", category: "elective", examType: "WASSCE", group: "General Science" },
+  { id: "elec-biomed", name: "Biomedical Science", category: "elective", examType: "WASSCE", group: "General Science" },
+  { id: "elec-engineering", name: "Engineering", category: "elective", examType: "WASSCE", group: "General Science" },
+  { id: "elec-aero-eng", name: "Aviation and Aerospace Engineering", category: "elective", examType: "WASSCE", group: "General Science" },
+  { id: "elec-mfg-eng", name: "Manufacturing Engineering", category: "elective", examType: "WASSCE", group: "General Science" },
   
-  // General Arts
+  // General Arts & Humanities
   { id: "elec-econ", name: "Economics", category: "elective", examType: "WASSCE", group: "General Arts" },
   { id: "elec-govt", name: "Government", category: "elective", examType: "WASSCE", group: "General Arts" },
   { id: "elec-geog", name: "Geography", category: "elective", examType: "WASSCE", group: "General Arts" },
@@ -44,14 +50,32 @@ export const WASSCE_ELECTIVE_SUBJECTS: Subject[] = [
   { id: "elec-french", name: "French", category: "elective", examType: "WASSCE", group: "General Arts" },
   { id: "elec-crs", name: "Christian Religious Studies (CRS)", category: "elective", examType: "WASSCE", group: "General Arts" },
   { id: "elec-irs", name: "Islamic Religious Studies (IRS)", category: "elective", examType: "WASSCE", group: "General Arts" },
-  { id: "elec-gh-lang", name: "Ghanaian Language (Twi/Fante/Ga/Ewe)", category: "elective", examType: "WASSCE", group: "General Arts" },
+  { id: "elec-wattr", name: "West African Traditional Religion", category: "elective", examType: "WASSCE", group: "General Arts" },
+  { id: "elec-arabic", name: "Arabic", category: "elective", examType: "WASSCE", group: "General Arts" },
+  { id: "elec-spanish", name: "Spanish", category: "elective", examType: "WASSCE", group: "General Arts" },
+  { id: "elec-music", name: "Music", category: "elective", examType: "WASSCE", group: "General Arts" },
+  { id: "elec-performing-arts", name: "Performing Arts", category: "elective", examType: "WASSCE", group: "General Arts" },
+  { id: "elec-pe-health", name: "Physical Education and Health (Elective)", category: "elective", examType: "WASSCE", group: "General Arts" },
+
+  // Ghanaian Languages (Elective)
+  { id: "elec-twi-asante", name: "Twi (Asante) (Elective)", category: "elective", examType: "WASSCE", group: "General Arts" },
+  { id: "elec-twi-akuapem", name: "Twi (Akuapem) (Elective)", category: "elective", examType: "WASSCE", group: "General Arts" },
+  { id: "elec-fante", name: "Fante (Elective)", category: "elective", examType: "WASSCE", group: "General Arts" },
+  { id: "elec-ga", name: "Ga (Elective)", category: "elective", examType: "WASSCE", group: "General Arts" },
+  { id: "elec-ewe", name: "Ewe (Elective)", category: "elective", examType: "WASSCE", group: "General Arts" },
+  { id: "elec-dagbani", name: "Dagbani (Elective)", category: "elective", examType: "WASSCE", group: "General Arts" },
+  { id: "elec-dangme", name: "Dangme (Elective)", category: "elective", examType: "WASSCE", group: "General Arts" },
+  { id: "elec-dagaare", name: "Dagaare (Elective)", category: "elective", examType: "WASSCE", group: "General Arts" },
+  { id: "elec-gonja", name: "Gonja (Elective)", category: "elective", examType: "WASSCE", group: "General Arts" },
+  { id: "elec-kasem", name: "Kasem (Elective)", category: "elective", examType: "WASSCE", group: "General Arts" },
+  { id: "elec-nzema", name: "Nzema (Elective)", category: "elective", examType: "WASSCE", group: "General Arts" },
 
   // Business
   { id: "elec-accounting", name: "Financial Accounting", category: "elective", examType: "WASSCE", group: "Business" },
   { id: "elec-costing", name: "Cost Accounting", category: "elective", examType: "WASSCE", group: "Business" },
   { id: "elec-bus-mgmt", name: "Business Management", category: "elective", examType: "WASSCE", group: "Business" },
-  { id: "elec-business-maths", name: "Business Mathematics", category: "elective", examType: "WASSCE", group: "Business" },
-  { id: "elec-typewriting", name: "Typewriting / Clerical Office", category: "elective", examType: "WASSCE", group: "Business" },
+  { id: "elec-clerical-office", name: "Clerical Office Duties", category: "elective", examType: "WASSCE", group: "Business" },
+  { id: "elec-typewriting", name: "Typewriting", category: "elective", examType: "WASSCE", group: "Business" },
 
   // Visual Arts
   { id: "elec-gka", name: "General Knowledge in Art (GKA)", category: "elective", examType: "WASSCE", group: "Visual Arts" },
@@ -60,6 +84,9 @@ export const WASSCE_ELECTIVE_SUBJECTS: Subject[] = [
   { id: "elec-ceramics", name: "Ceramics", category: "elective", examType: "WASSCE", group: "Visual Arts" },
   { id: "elec-sculpture", name: "Sculpture", category: "elective", examType: "WASSCE", group: "Visual Arts" },
   { id: "elec-textiles", name: "Textiles", category: "elective", examType: "WASSCE", group: "Visual Arts" },
+  { id: "elec-basketry", name: "Basketry", category: "elective", examType: "WASSCE", group: "Visual Arts" },
+  { id: "elec-leatherwork", name: "Leatherwork", category: "elective", examType: "WASSCE", group: "Visual Arts" },
+  { id: "elec-jewellery", name: "Jewellery", category: "elective", examType: "WASSCE", group: "Visual Arts" },
 
   // Home Economics
   { id: "elec-food-nutrition", name: "Food & Nutrition", category: "elective", examType: "WASSCE", group: "Home Economics" },
@@ -71,6 +98,7 @@ export const WASSCE_ELECTIVE_SUBJECTS: Subject[] = [
   { id: "elec-animal-husbandry", name: "Animal Husbandry", category: "elective", examType: "WASSCE", group: "Agricultural Science" },
   { id: "elec-crop-husbandry", name: "Crop Husbandry & Horticulture", category: "elective", examType: "WASSCE", group: "Agricultural Science" },
   { id: "elec-fisheries", name: "Fisheries", category: "elective", examType: "WASSCE", group: "Agricultural Science" },
+  { id: "elec-forestry", name: "Forestry", category: "elective", examType: "WASSCE", group: "Agricultural Science" },
 
   // Technical
   { id: "elec-tech-drawing", name: "Technical Drawing", category: "elective", examType: "WASSCE", group: "Technical" },
@@ -79,6 +107,7 @@ export const WASSCE_ELECTIVE_SUBJECTS: Subject[] = [
   { id: "elec-building-construction", name: "Building Construction", category: "elective", examType: "WASSCE", group: "Technical" },
   { id: "elec-applied-electricity", name: "Applied Electricity", category: "elective", examType: "WASSCE", group: "Technical" },
   { id: "elec-auto-mechanics", name: "Auto Mechanics", category: "elective", examType: "WASSCE", group: "Technical" },
+  { id: "elec-electronics", name: "Electronics", category: "elective", examType: "WASSCE", group: "Technical" },
 ];
 
 export const ALL_WASSCE_SUBJECTS = [...WASSCE_CORE_SUBJECTS, ...WASSCE_ELECTIVE_SUBJECTS];
@@ -121,7 +150,8 @@ export const SHS_STREAM_PRESETS: StreamPreset[] = [
       "Business Management",
       "Economics",
       "Elective Mathematics",
-      "Business Mathematics",
+      "Clerical Office Duties",
+      "Typewriting",
       "French",
     ],
   },
@@ -140,7 +170,12 @@ export const SHS_STREAM_PRESETS: StreamPreset[] = [
       "French",
       "Christian Religious Studies (CRS)",
       "Islamic Religious Studies (IRS)",
-      "Ghanaian Language (Twi/Fante/Ga/Ewe)",
+      "Twi (Asante) (Elective)",
+      "Twi (Akuapem) (Elective)",
+      "Fante (Elective)",
+      "Ga (Elective)",
+      "Ewe (Elective)",
+      "Music",
       "Elective Mathematics",
     ],
   },
@@ -157,6 +192,9 @@ export const SHS_STREAM_PRESETS: StreamPreset[] = [
       "Textiles",
       "Ceramics",
       "Sculpture",
+      "Basketry",
+      "Leatherwork",
+      "Jewellery",
       "Economics",
       "French",
     ],
@@ -191,6 +229,7 @@ export const SHS_STREAM_PRESETS: StreamPreset[] = [
       "Chemistry",
       "Physics",
       "Fisheries",
+      "Forestry",
       "Elective Mathematics",
     ],
   },
@@ -209,6 +248,7 @@ export const SHS_STREAM_PRESETS: StreamPreset[] = [
       "Woodwork",
       "Metalwork",
       "Auto Mechanics",
+      "Electronics",
     ],
   },
 ];
