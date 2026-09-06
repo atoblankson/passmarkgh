@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Heart } from "lucide-react";
+import { Heart, Mail } from "lucide-react";
 
 export function Footer() {
   return (
@@ -60,16 +60,31 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Col 3 - Legal & Contact */}
-          <div className="space-y-3">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-900">
-              Disclaimer
-            </h4>
-            <p className="text-xs text-slate-500 leading-relaxed">
-              PassMarkGH is an independent guidance platform. Cutoff points and
-              admissions policies are determined solely by respective university
-              admissions boards.
-            </p>
+          {/* Col 3 - Contact & Disclaimer */}
+          <div className="space-y-4">
+            <div className="space-y-2">
+              <h4 className="text-xs font-bold uppercase tracking-wider text-slate-900">
+                Contact Us
+              </h4>
+              <a
+                href="mailto:passmarkgh@gmail.com"
+                className="inline-flex items-center gap-1.5 text-xs font-medium text-slate-600 hover:text-brand-blue transition-colors"
+              >
+                <Mail className="h-3.5 w-3.5 text-brand-blue shrink-0" />
+                <span>passmarkgh@gmail.com</span>
+              </a>
+            </div>
+
+            <div className="space-y-2 pt-1">
+              <h4 className="text-xs font-bold uppercase tracking-wider text-slate-900">
+                Disclaimer
+              </h4>
+              <p className="text-xs text-slate-500 leading-relaxed">
+                PassMarkGH is an independent guidance platform. Cutoff points and
+                admissions policies are determined solely by respective university
+                admissions boards.
+              </p>
+            </div>
           </div>
         </div>
 
