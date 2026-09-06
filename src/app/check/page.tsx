@@ -18,7 +18,7 @@ export default function CheckPage() {
       <div>
         <Navbar />
 
-        <main className="mx-auto max-w-xl px-4 sm:px-6 py-6 sm:py-10">
+        <main className="mx-auto max-w-xl px-4 sm:px-6 pt-20 sm:pt-28 pb-6 sm:pb-10">
           {/* Breadcrumb / Back link */}
           <nav className="flex items-center gap-1.5 text-xs text-slate-400 mb-6" aria-label="Breadcrumb">
             <Link href="/" className="hover:text-brand-blue transition-colors">
