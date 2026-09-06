@@ -4,12 +4,9 @@ import * as React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import {
-  ListOrdered,
-  ShieldCheck,
-  Calculator,
   GraduationCap,
-  CreditCard,
   HelpCircle,
+  Mail,
   ArrowRight,
   ChevronRight,
 } from "lucide-react";
@@ -17,12 +14,9 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 const NAV_ITEMS = [
-  { href: "/#how-it-works", label: "How it works", icon: ListOrdered },
-  { href: "/#comparison", label: "Why we are better", icon: ShieldCheck },
-  { href: "/#calculator", label: "Calculator", icon: Calculator },
   { href: "/#universities", label: "Universities", icon: GraduationCap },
-  { href: "/#pricing", label: "Pricing", icon: CreditCard },
   { href: "/#faq", label: "FAQ", icon: HelpCircle },
+  { href: "mailto:passmarkgh@gmail.com", label: "Contact Us", icon: Mail },
 ];
 
 export function Navbar() {
@@ -54,7 +48,7 @@ export function Navbar() {
   }, [mobileMenuOpen]);
 
   return (
-    <div className="fixed top-3 sm:top-6 left-0 right-0 z-50 flex justify-center px-3 sm:px-6 pointer-events-none">
+    <div className="w-full flex justify-center px-3 sm:px-6 pt-3 sm:pt-5 pb-1 z-30">
       <header
         ref={navRef}
         className={cn(
