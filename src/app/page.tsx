@@ -69,10 +69,10 @@ export default function HomePage() {
 
           <ScrollReveal variant="fade-up" delay={160} className="hover-lift px-2 py-1">
             <div className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight">
-              <AnimatedCounter target={400} suffix="+" duration={1100} />
+              <AnimatedCounter target={761} suffix="+" duration={1100} />
             </div>
             <div className="text-[11px] sm:text-xs font-semibold text-slate-500 mt-1 uppercase tracking-wider">
-              Degree Programmes Indexed
+              Students Checked Today
             </div>
           </ScrollReveal>
 
