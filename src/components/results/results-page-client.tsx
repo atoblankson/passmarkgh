@@ -604,13 +604,13 @@ export function ResultsPageClient() {
         /* Free User Experience: First 2 qualifying programmes shown for free, 3rd card blurred & locked, followed by prominent paywall */
         <div className="space-y-4">
           {/* Live Social Proof Line */}
-          <div className="flex items-center gap-2 px-1 text-[11px] sm:text-xs text-slate-500 font-medium">
+          <div className="flex items-center justify-center gap-2 px-1 text-[11px] sm:text-xs text-slate-500 font-medium text-center">
             <span className="relative flex h-2 w-2 shrink-0">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
               <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
             </span>
             <span>
-              <strong className="text-slate-800 font-bold">761+ students</strong> checked their qualifying programmes today
+              <strong className="text-slate-800 font-bold">761 students</strong> checked their qualifying programmes today
             </span>
           </div>
 
